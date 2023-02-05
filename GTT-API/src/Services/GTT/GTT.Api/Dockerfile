@@ -26,5 +26,5 @@ RUN dotnet publish --no-restore -c Release -o /function
 FROM mcr.microsoft.com/azure-functions/dotnet:4
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-EXPOSE 8080
+EXPOSE 7071
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
