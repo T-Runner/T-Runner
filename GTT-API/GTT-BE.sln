@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTT.Infrastructure", "src\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{42ED5D74-99A3-4854-9F26-96C5969F000E}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "t-runner-db-schema", "t-runner-db\t-runner-db-schema\t-runner-db-schema.sqlproj", "{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,12 @@ Global
 		{B7E580EE-6724-4016-8E82-94670A04FCCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7E580EE-6724-4016-8E82-94670A04FCCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7E580EE-6724-4016-8E82-94670A04FCCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +62,7 @@ Global
 		{4591F98C-ED52-4C8C-A86D-80070D01BA15} = {7BBB383C-7D78-47D2-BAD4-622DDA0A367A}
 		{5AA0F734-5FAB-45C5-88C3-D6C663B268C1} = {7BBB383C-7D78-47D2-BAD4-622DDA0A367A}
 		{B7E580EE-6724-4016-8E82-94670A04FCCD} = {7BBB383C-7D78-47D2-BAD4-622DDA0A367A}
+		{24F4DB21-23BB-453A-B3B6-8E0E48E5244A} = {42ED5D74-99A3-4854-9F26-96C5969F000E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB06DFFA-6DDB-40CF-8AD8-5F93CF1A33AE}
