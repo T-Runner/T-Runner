@@ -1,0 +1,32 @@
+version: '3.4'
+
+services: 
+
+  #sqldata:
+   # image: mcr.microsoft.com/mssql/server:2017-latest 
+
+  gtt-api:    
+    build:
+     context: ./GTT-API
+     dockerfile: src/Services/GTT/GTT.Api/Dockerfile
+    ports:
+    - 8080:80
+    # depends_on:
+    #  - basketdata  
+  
+  reactjs:
+    build:
+      context: ./ReactJs
+      dockerfile: Dockerfile
+    ports:
+    - 3000:80
+     # args:
+     #  NODE_IMAGE: ${NODE_IMAGE:-node:10.13}
+#    depends_on:
+#      - webshoppingagg
+#      - webshoppingapigw
+#      - webmarketingapigw
+
+
+
+

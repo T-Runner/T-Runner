@@ -1,0 +1,40 @@
+.back-icon {
+    content: url('../../../assets/icons/go-back.svg');
+}
+
+.calories {
+    content: url('../../../assets/GTTIcons/WorkEx3/Calories.svg');
+    width: 50px;
+    height: 50px;
+
+}
+
+.splat-point {
+    content: url('../../../assets/images/icon_app.PNG');
+    width: 50px;
+    height: 50px;
+}
+
+.avg-heart-rate {
+    content: url('../../../assets/GTTIcons/WorkEx3/Heart\ Rate.svg');
+    width: 50px;
+    height: 50px;
+}
+
+.heart-rate {
+    content: url('../../../assets/images/icon_app.PNG');
+    width: 50px;
+    height: 50px;
+}
+
+.miles {
+    content: url('../../../assets/GTTIcons/WorkEx3/Setting.svg');
+    width: 50px;
+    height: 50px;
+}
+
+.steps {
+    content: url('../../../assets/GTTIcons/WorkEx/Loaners.svg');
+    width: 50px;
+    height: 50px;
+}

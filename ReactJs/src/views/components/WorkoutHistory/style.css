@@ -1,0 +1,18 @@
+
+.icon_heartRate {
+    width: 25px;
+    height: 25px;
+    content: url('../../../assets/GTTIcons/WorkEx3/Calories.svg');
+}
+
+.icon_otf {
+    width: 25px;
+    height: 25px;
+    content: url('../../../assets/images/icon_app.PNG');
+}
+
+.you {
+    width: 20px;
+    height: 18px;
+    content: url('../../../assets/images/you.PNG');
+}
