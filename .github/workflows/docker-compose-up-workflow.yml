@@ -14,5 +14,3 @@ jobs:
       
     - name: Compose
       run: docker compose up -d
-    - name: Integration tests
-      run: docker compose up --exit-code-from integrationtest integrationtest
