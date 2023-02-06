@@ -12,5 +12,5 @@ jobs:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
       
-    - name: Build the stack
-      run: docker compose up
+    - name: Compose
+      run: docker-compose up --exit-code-from integrationtest integrationtest
