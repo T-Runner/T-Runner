@@ -10,7 +10,7 @@ services:
       - 10011:10001
       - 10012:10002
     volumes:
-      - ./azurite:/workspace
+      - azurite:/workspace
 
   sqldata:
     image: mcr.microsoft.com/mssql/server:2022-latest 
@@ -19,6 +19,8 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - 5434:1433
+    volumes:
+      - sqlvolume:/var/opt/mssql
 
   gtt-api:    
     build:
@@ -39,5 +41,8 @@ services:
     ports:
     - 3000:80
 
-
-
+volumes:
+  sqlvolume:
+    driver: local
+  azurite:
+    driver: local
