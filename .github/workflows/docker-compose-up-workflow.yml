@@ -12,5 +12,8 @@ jobs:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
       
-    - name: Compose
+    - name: Quick compose
       run: docker compose up -d
+      
+    - name: Run containers
+      run: docker run sh -c "t-runner-local-reactjs && mcr.microsoft.com/mssql/server:2022-latest && mcr.microsoft.com/azure-storage/azurite && t-runner-local-gtt-api"
