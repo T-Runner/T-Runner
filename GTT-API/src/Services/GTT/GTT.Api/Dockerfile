@@ -14,6 +14,7 @@ COPY "src/Services/GTT/GTT.Api/GTT.Api.csproj" "src/Services/GTT/GTT.Api/GTT.Api
 COPY "src/Services/GTT/shared/GTT.Application/GTT.Application.csproj" "src/Services/GTT/shared/GTT.Application/GTT.Application.csproj"
 COPY "src/Services/GTT/shared/GTT.Domain/GTT.Domain.csproj" "src/Services/GTT/shared/GTT.Domain/GTT.Domain.csproj"
 COPY "src/Services/GTT/shared/GTT.Infrastructure/GTT.Infrastructure.csproj" "src/Services/GTT/shared/GTT.Infrastructure/GTT.Infrastructure.csproj"
+COPY "t-runner-db/t-runner-db-schema/t-runner-db-schema.sqlproj" "t-runner-db/t-runner-db-schema/t-runner-db-schema.sqlproj"
 
 RUN dotnet restore "GTT-BE.sln"
 
