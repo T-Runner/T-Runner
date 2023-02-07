@@ -8,16 +8,21 @@ import '../../../../styles/tooltip.css'
 import UploadImage from '../../../components/UploadImage';
 import { activeDatas, groupTypeDatas, locationDatas } from '../../../../constants';
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
+import ModalConfirm from '../../../components/ModalConfirm';
 
 const CreateEditGroup = ({ onClose }) => {
-  const [data, setData] = useState([{ item: '' }]);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   return (
     <div>
       <div className='font-barlow font-semibold	 flex'>
         <p className='text-ct4-dark-green text-sm uppercase cursor-pointer' onClick={() => onClose()}>Groups</p>
         <div className='mx-3 text-xs text-ct4-gray'>
-          <i class="fa-solid fa-chevron-right"></i>
+          <i className="fa-solid fa-chevron-right"></i>
         </div>
         <p className='text-ct4-gray-3 text-sm uppercase'>Create a New Group</p>
       </div>
@@ -25,7 +30,7 @@ const CreateEditGroup = ({ onClose }) => {
         <p className='font-barlow font-bold uppercase text-28'>Create a new Group</p>
         <div>
           <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
-          <button className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded'>Save</button>
+          <button className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={() => setShowModal(true)}>Save</button>
         </div>
       </div>
       <div className='mt-8 grid grid-cols-5'>
@@ -57,6 +62,7 @@ const CreateEditGroup = ({ onClose }) => {
         </div>
         <UploadImage />
       </div>
+      {showModal && <ModalConfirm isShow={showModal} onClose={handleClose} text='Are you sure you want to save it? This action cannot be undone.' />}
     </div>
   )
 };

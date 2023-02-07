@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { groupData } from '../../../../constants';
 import FilterIcon from '../../../components/Icons/filter-icon';
 import PageLayout from '../../../components/PageLayout';
@@ -13,6 +13,7 @@ import { StyledTableCell } from './style';
 import GroupTR from './groupTR';
 import Paginations from '../../../components/Pagination';
 import TotalResult from '../../../components/Pagination/total-result';
+import CreateEditGroup from './create-edit-group';
 
 const GroupManagement = () => {
   const [isCreate, setIsCreated] = useState(false);
