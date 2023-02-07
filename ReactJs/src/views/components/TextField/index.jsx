@@ -1,21 +1,19 @@
 import React from 'react'
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import { StyledTextField } from '../../pages/AdminSide/GroupManagement/style';
 
-const TextFields = ({ name, required, value, onChange, ml, type, width = '250px', placeholder }) => {
+const TextFields = ({ name, required, value, onChange, ml, type, width = '250px', height = '40px', placeholder }) => {
   return (
-    <div className='flex items-center text-lg font-serif'>
-      <p className='m-2 '>{name} {required && <span className='text-red-600 ml-1'>*</span>}
-      </p>
+    <div className='text-sm font-barlow-regular'>
+      <p>{name} {required && <span className='text-red-600'>*</span>}</p>
       <Box
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: width },
-          marginLeft: ml
+          '& .MuiTextField-root': { width: width, height: height, marginTop: '4px' },
         }}
         autoComplete="off"
       >
-        <TextField
+        <StyledTextField
           size='small'
           value={value}
           onChange={onChange}

@@ -13,6 +13,7 @@ import ExerciseManagement from '../views/pages/AdminSide/ExerciseManagement';
 import GroupManagement from '../views/pages/AdminSide/GroupManagement';
 import SportManagement from '../views/pages/AdminSide/SportManagement';
 import Dashboard from '../views/pages/AdminSide/Dashboard';
+import CreateEditGroup from '../views/pages/AdminSide/GroupManagement/create-edit-group';
 
 const Router = () => {
   return (
@@ -29,6 +30,7 @@ const Router = () => {
       <Route path='/member-management' element={<MemberManagement />} />
       <Route path='/exercise-management' element={<ExerciseManagement />} />
       <Route path='/group-management' element={<GroupManagement />} />
+      <Route path='/create-group' element={<CreateEditGroup />} />
       <Route path='/sport-management' element={<SportManagement />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='*' element={<NotFoundPage />} />
