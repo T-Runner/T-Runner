@@ -59,6 +59,7 @@ export const exercisesdata = [
   createDataExercise('https://www.mensjournal.com/wp-content/uploads/2018/05/1380-dumbbell-curl1.jpg?quality=86&strip=all', 'Dumbbell workout'),
 ];
 
+//fake data group list
 const createDataGroups = (groupName, desc, location, sport, groupType, createdDate, totalRunners, active) => {
   return { groupName, desc, location, sport, groupType, createdDate, totalRunners, active };
 };
@@ -73,4 +74,41 @@ export const groupData = [
   createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
   createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
   createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
+];
+
+
+//fake data location list
+const createLocationData = (value) => {
+  return { value };
+};
+
+export const locationDatas = [
+  createLocationData('Hà Nội'),
+  createLocationData('Hà Nam'),
+  createLocationData('Hà Tĩnh'),
+  createLocationData('Hải Dương'),
+  createLocationData('Hải Phòng'),
+];
+
+//fake data group type
+const createGroupTypeData = (value) => {
+  return { value };
+};
+
+export const groupTypeDatas = [
+  createGroupTypeData('Racing Team'),
+  createGroupTypeData('Company/Workplace'),
+  createGroupTypeData('Club'),
+  createGroupTypeData('Shop'),
+  createGroupTypeData('Other'),
+];
+
+//fake data active
+const createActiveData = (value) => {
+  return { value };
+};
+
+export const activeDatas = [
+  createActiveData('Enable'),
+  createActiveData('Disable'),
 ];
