@@ -24,17 +24,17 @@ const SingleSelect = ({ name, width = '600px', required, options }) => {
             size='small'
             displayEmpty
             renderValue={
-              value !== '' ? undefined : value == 'Active' ? 'Disable' : () => <ul>{name}</ul>
+              value !== '' ? undefined : name == 'Active' ? () => <ul>Enable</ul> : () => <ul>{name}</ul>
             }
           >
-            {options.map((item, index) => (
+            {options.length > 0 && options.map((item, index) => (
               <StyledMenuItem value={item.value} key={index}>{item.value}</StyledMenuItem>
             ))}
           </StyledSelect>
         </StyledFormControl>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 export default SingleSelect;

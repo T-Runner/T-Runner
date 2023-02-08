@@ -23,7 +23,7 @@ const TextFields = ({ name, required, value, onChange, ml, type, width = '250px'
         />
       </Box>
     </div>
-  )
+  );
 };
 
 export default TextFields;

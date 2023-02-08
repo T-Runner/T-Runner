@@ -40,7 +40,7 @@ const UploadImage = () => {
           <button className='ml-1 uppercase font-barlow font-semibold text-ct4-dark-green' >Remove</button>
         </div>
       </div>
-    </div>)
+    </div>);
   };
 
   const renderUploadField = () => {
@@ -54,7 +54,7 @@ const UploadImage = () => {
         </div>
       </div>
       <input id="dropzone-file" type="file" className="hidden" accept="image/*" onChange={handleChange} />
-    </label>)
+    </label>);
   };
 
   return (
@@ -64,7 +64,7 @@ const UploadImage = () => {
         {selectedImage ? renderImage() : renderUploadField()}
       </div>
     </div>
-  )
+  );
 };
 
 export default UploadImage;

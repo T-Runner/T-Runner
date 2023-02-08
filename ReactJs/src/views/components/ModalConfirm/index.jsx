@@ -27,7 +27,7 @@ const ModalConfirm = ({ isShow = 'false', onClose, text, cancelLabel = 'Cancel',
         </Box>
       </Modal>
     </div>
-  )
+  );
 };
 
 export default ModalConfirm;

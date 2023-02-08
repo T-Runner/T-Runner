@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyledFormControl, StyledMenuItem, StyledSelect } from '../../pages/AdminSide/GroupManagement/style';
 import { Checkbox, ListItemIcon } from '@mui/material';
 import CheckedIcon from '../Icons/checked-icon';
+import { useState } from 'react';
 
 //fake data sports
 const ITEM_HEIGHT = 50;
@@ -23,15 +24,10 @@ const sportDatas = [
 ];
 
 const MultipleSelect = ({ name, required }) => {
-  const [sportName, setSportName] = React.useState(['Run']);
+  const [value, setValue] = useState(['Run']);
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setSportName(
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    setValue(event.target.value);
   };
 
   return (
@@ -40,19 +36,19 @@ const MultipleSelect = ({ name, required }) => {
       <StyledFormControl sx={{ width: 600 }}>
         <StyledSelect
           multiple
-          value={sportName}
+          value={value}
           onChange={handleChange}
           sx={{ marginTop: '4px', height: '40px' }}
-          renderValue={(selected) => selected.join(", ")}
+          renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {sportDatas.map((item) => (
+          {sportDatas.length > 0 && sportDatas.map((item) => (
             <StyledMenuItem
               key={item}
               value={item}
             >
               <ListItemIcon>
-                <Checkbox checked={sportName.indexOf(item) > -1} checkedIcon={<CheckedIcon />} />
+                <Checkbox checked={value.indexOf(item) > -1} checkedIcon={<CheckedIcon />} />
               </ListItemIcon>
               {item}
             </StyledMenuItem>
@@ -61,6 +57,6 @@ const MultipleSelect = ({ name, required }) => {
       </StyledFormControl>
     </div>
   );
-}
+};
 
 export default MultipleSelect;

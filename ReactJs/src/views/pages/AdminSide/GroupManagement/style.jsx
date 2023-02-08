@@ -64,4 +64,4 @@ export const StyledTextField = styled(TextField)(() => ({
     fontSize: "14px",
     fontFamily: 'Barlow',
   }
-}))
+}));

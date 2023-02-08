@@ -19,7 +19,7 @@ const CreateEditGroup = ({ onClose }) => {
 
   return (
     <div>
-      <div className='font-barlow font-semibold	 flex'>
+      <div className='font-barlow font-semibold	flex'>
         <p className='text-ct4-dark-green text-sm uppercase cursor-pointer' onClick={() => onClose()}>Groups</p>
         <div className='mx-3 text-xs text-ct4-gray'>
           <i className="fa-solid fa-chevron-right"></i>
@@ -64,7 +64,7 @@ const CreateEditGroup = ({ onClose }) => {
       </div>
       {showModal && <ModalConfirm isShow={showModal} onClose={handleClose} text='Are you sure you want to save it? This action cannot be undone.' />}
     </div>
-  )
+  );
 };
 
 export default CreateEditGroup;
