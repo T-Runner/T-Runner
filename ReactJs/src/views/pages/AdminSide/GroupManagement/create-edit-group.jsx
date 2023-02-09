@@ -42,7 +42,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
   const handleChangeGroupType = (event) => {
     setFormState({
       ...formState,
-      location: event.target.value,
+      groupType: event.target.value,
     });
   };
 
