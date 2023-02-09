@@ -23,12 +23,7 @@ const sportDatas = [
   "Other",
 ];
 
-const MultipleSelect = ({ name, required }) => {
-  const [value, setValue] = useState(['Run']);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+const MultipleSelect = ({ name, required, value = [], onChange }) => {
 
   return (
     <div className='text-sm font-barlow-regular'>
@@ -37,7 +32,7 @@ const MultipleSelect = ({ name, required }) => {
         <StyledSelect
           multiple
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
           sx={{ marginTop: '4px', height: '40px' }}
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}

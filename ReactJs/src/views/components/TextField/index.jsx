@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import { StyledTextField } from '../../pages/AdminSide/GroupManagement/style';
 
-const TextFields = ({ name, required, value, onChange, ml, type, width = '250px', height = '40px', placeholder }) => {
+const TextFields = ({ name, required, value, onChange, type, width = '250px', height = '40px', placeholder }) => {
   return (
     <div className='text-sm font-barlow-regular'>
       <p>{name} {required && <span className='text-red-600'>*</span>}</p>

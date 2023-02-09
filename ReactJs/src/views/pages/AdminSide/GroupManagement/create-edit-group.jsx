@@ -1,21 +1,75 @@
 import { Checkbox } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MultipleSelect from '../../../components/Dropdown/multi-select';
 import SingleSelect from '../../../components/Dropdown/single-select';
 import CheckedIcon from '../../../components/Icons/checked-icon';
 import TextFields from '../../../components/TextField';
 import '../../../../styles/tooltip.css'
 import UploadImage from '../../../components/UploadImage';
-import { activeDatas, groupTypeDatas, locationDatas } from '../../../../constants';
+import { activeDatas, defaultGroup, groupTypeDatas, locationDatas } from '../../../../constants';
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
 import ModalConfirm from '../../../components/ModalConfirm';
 
-const CreateEditGroup = ({ onClose }) => {
+const CreateEditGroup = ({ onClose, action, data }) => {
   const [showModal, setShowModal] = useState(false);
+  const [formState, setFormState] = useState(defaultGroup);
 
   const handleClose = () => {
     setShowModal(false);
   };
+
+  const handleChangeGroupName = (event) => {
+    setFormState({
+      ...formState,
+      groupName: event.target.value,
+    });
+  };
+
+  const handleChangeDescription = (event) => {
+    setFormState({
+      ...formState,
+      desc: event.target.value,
+    });
+  };
+
+  const handleChangeLocation = (event) => {
+    setFormState({
+      ...formState,
+      location: event.target.value,
+    });
+  };
+
+  const handleChangeGroupType = (event) => {
+    setFormState({
+      ...formState,
+      location: event.target.value,
+    });
+  };
+
+  const handleChangeActive = (event) => {
+    setFormState({
+      ...formState,
+      active: event.target.value,
+    });
+  };
+
+  const handleChangeSport = (event) => {
+    setFormState({
+      ...formState,
+      sport: event.target.value,
+    });
+  };
+
+  const handleChangeWebsite = (event) => {
+    setFormState({
+      ...formState,
+      sport: event.target.value,
+    });
+  };
+
+  useEffect(() => {
+    setFormState({ ...data });
+  }, [data]);
 
   return (
     <div>
@@ -24,10 +78,10 @@ const CreateEditGroup = ({ onClose }) => {
         <div className='mx-3 text-xs text-ct4-gray'>
           <i className="fa-solid fa-chevron-right"></i>
         </div>
-        <p className='text-ct4-gray-3 text-sm uppercase'>Create a New Group</p>
+        {action == 'Create' ? <p className='text-ct4-gray-3 text-sm uppercase'>Create a New Group</p> : <p className='text-ct4-gray-3 text-sm uppercase'>Edit Group</p>}
       </div>
       <div className='mt-5 flex justify-between'>
-        <p className='font-barlow font-bold uppercase text-28'>Create a new Group</p>
+        {action == 'Create' ? <p className='font-barlow font-bold uppercase text-28'>Create a New Group</p> : <p className='font-barlow font-bold uppercase text-28'>Edit Group</p>}
         <div>
           <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
           <button className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={() => setShowModal(true)}>Save</button>
@@ -35,15 +89,15 @@ const CreateEditGroup = ({ onClose }) => {
       </div>
       <div className='mt-8 grid grid-cols-5'>
         <div className='grid gap-y-4 col-span-2' >
-          <TextFields name='Group Name' required={true} width='600px' placeholder={'Group Name'} />
-          <TextFields name='Description' required={false} width='600px' placeholder={'Description'} />
-          <SingleSelect name='Location' required={true} width='600px' options={locationDatas} />
-          <TextFields name='Website' required={false} width='600px' placeholder={'Website'} />
-          <SingleSelect name='Group Type' required={true} width='600px' options={groupTypeDatas} />
-          <MultipleSelect name='Sport' required={true} />
-          <SingleSelect name='Active' required={true} width='600px' options={activeDatas} />
+          <TextFields name='Group Name' required={true} width='600px' placeholder={'Group Name'} value={formState.groupName} onChange={handleChangeGroupName} />
+          <TextFields name='Description' required={false} width='600px' placeholder={'Description'} value={formState.desc} onChange={handleChangeDescription} />
+          <SingleSelect name='Location' required={true} width='600px' options={locationDatas} value={formState.location} onChange={handleChangeLocation} />
+          <TextFields name='Website' required={false} width='600px' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
+          <SingleSelect name='Group Type' required={true} width='600px' options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} />
+          <MultipleSelect name='Sport' required={true} value={formState.sport} onChange={handleChangeSport} />
+          <SingleSelect name='Active' required={true} width='600px' options={activeDatas} value={formState.active} onChange={handleChangeActive} />
           <div className='-ml-3 font-barlow flex items-center'>
-            <Checkbox checkedIcon={<CheckedIcon />} />
+            <Checkbox checkedIcon={<CheckedIcon />} checked={formState.checkbox} />
             <p className='mr-2'>Make your club invite-only?</p>
             <div className='tooltip cursor-pointer'>
               <HelpMenuIcon />
@@ -60,7 +114,7 @@ const CreateEditGroup = ({ onClose }) => {
             </div>
           </div>
         </div>
-        <UploadImage />
+        <UploadImage img={formState.img} />
       </div>
       {showModal && <ModalConfirm isShow={showModal} onClose={handleClose} text='Are you sure you want to save it? This action cannot be undone.' />}
     </div>

@@ -38,7 +38,12 @@ export const StyledSelect = styled(Select)(() => ({
 
 export const StyledFormControl = styled(FormControl)(() => ({
   "& .MuiInputBase-root": {
-    color: '#dfdfdf',
+    borderColor: '#dfdfdf',
+    borderWidth: "1px",
+    borderStyle: "solid",
+    color: '#333333'
+  },
+  "& .MuiInputBase-root": {
     borderColor: '#dfdfdf',
     borderWidth: "1px",
     borderStyle: "solid",
