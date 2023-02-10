@@ -1,48 +1,88 @@
-version: '3.9'
+version: '3.8'
 
-services: 
-  
-  azurite:
-    image: mcr.microsoft.com/azure-storage/azurite
-    command: "azurite --loose --blobHost 0.0.0.0 --blobPort 10000 --queueHost 0.0.0.0 --queuePort 10001 --location /workspace --debug /workspace/debug.log"
-    ports:
-      - 10010:10000
-      - 10011:10001
-      - 10012:10002
-    volumes:
-      - azurite:/workspace
-
-  sqldata:
-    image: mcr.microsoft.com/mssql/server:2022-latest 
-    environment:
-      - SA_PASSWORD=t_runnerP@ssw0rd
-      - ACCEPT_EULA=Y
-    ports:
-      - 5434:1433
-    volumes:
-      - sqlvolume:/var/opt/mssql
-
-  gtt-api:    
+services:
+  api:
     build:
-     context: ./GTT-API
-     args:
-        AzureWebJobsStorage: "${AzureWebJobsStorage}"
-     dockerfile: src/Services/GTT/GTT.Api/Dockerfile
-    ports:
-    - 7071:80
+      context: ./GTT-API
+      dockerfile: Dockerfile
+    container_name: api
     depends_on:
-      - azurite    
-      - sqldata
+      - database
+    restart: always
+    expose:
+      - 8080
+    networks:
+      - backend
+      # - reverse-proxy
+    profiles: ["dev", "prod"]
+
+  database:
+    image: mysql:5.7.33
+    container_name: database
+    volumes:
+      - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
+      - ${DATA_PATH_HOST}/log/mysql:/var/log/mysql
+      # - ./docker/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+      # - ./docker/mysql/init:/docker-entrypoint-initdb.d/:ro
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - TZ=${TIMEZONE}
+    expose:
+      - 3306
+    healthcheck:
+      test: mysqladmin ping -h127.0.0.1 -u${MYSQL_USER} --password=${MYSQL_PASSWORD}
+      interval: 3s
+      timeout: 20s
+      retries: 10
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+        max-size: "5m"
+    networks:
+      - backend
+    profiles: ["dev", "prod"]
+
+  pma:
+    image: phpmyadmin
+    container_name: pma
+    depends_on:
+      - database
+    restart: always
+    environment:
+      - PMA_HOST=database
+      - PMA_PORT=3306
+      # - VIRTUAL_HOST=${BASE_DOMAIN}
+      # - VIRTUAL_PORT=81
+      # - LETSENCRYPT_HOST=${BASE_DOMAIN}
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+        max-size: "5m"
+    ports:
+      - 81:80
+    networks:
+      - backend
+    profiles: ["dev", "prod"]
   
-  reactjs:
+  web:
     build:
       context: ./ReactJs
       dockerfile: Dockerfile
+    container_name: web
+    restart: always
     ports:
-    - 3000:80
+      - 80:80
+    networks:
+      - backend
+    profiles: ["dev", "prod"]
 
-volumes:
-  sqlvolume:
-    driver: local
-  azurite:
-    driver: local
+networks:
+  backend:
+  # reverse-proxy:
+  #   external: true
