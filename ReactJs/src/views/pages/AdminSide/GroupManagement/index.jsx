@@ -1,32 +1,45 @@
 import React, { useState } from 'react'
+import { defaultGroup } from '../../../../constants';
 import PageLayout from '../../../components/PageLayout';
 import CreateEditGroup from './create-edit-group';
 import ListGroup from './list-group';
 
 const GroupManagement = () => {
   const [isCreate, setIsCreated] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [group, setGroup] = useState(defaultGroup);
 
   const handleClose = () => {
     setIsCreated(false);
+    setIsEdit(false);
   };
 
   const handleCreate = () => {
     setIsCreated(true);
   }
 
+  const handleEdit = (item) => {
+    setGroup({
+      groupName: item.groupName,
+      desc: item.desc,
+      location: item.location,
+      sport: item.sport,
+      groupType: item.groupType,
+      active: item.active,
+      website: item.website,
+      checkbox: item.checkbox,
+      img: item.img
+    });
+    setIsEdit(true);
+  };
+
   return (
     <div>
       <PageLayout>
-        {isCreate ?
-          <CreateEditGroup onClose={handleClose} />
+        {isCreate || isEdit ?
+          <CreateEditGroup onClose={handleClose} isCreate={isCreate} data={group} />
           :
-          <div>
-            <div className='flex justify-between'>
-              <p className='uppercase font-barlow font-bold text-28'>Groups</p>
-              <button className='uppercase w-189 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={handleCreate}>Create a New Group</button>
-            </div>
-            <ListGroup />
-          </div>
+          <ListGroup handleEdit={handleEdit} handleCreate={handleCreate} />
         }
       </PageLayout>
     </div>
