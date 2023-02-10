@@ -41,6 +41,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
     }
     return true;
   };
+
   const handleSubmitForm = (e) => {
     if (e) {
       e.preventDefault();
