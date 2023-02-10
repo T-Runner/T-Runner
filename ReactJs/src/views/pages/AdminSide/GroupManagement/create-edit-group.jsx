@@ -110,6 +110,13 @@ const CreateEditGroup = ({ onClose, action, data }) => {
     });
   };
 
+  const handleSave = () => {
+    if (!validateForm()) {
+      return;
+    }
+    setShowModal(true)
+  }
+
   useEffect(() => {
     setFormState({ ...data });
   }, [data]);
@@ -132,7 +139,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
           {action == 'Create' ? <p className='font-barlow font-bold uppercase text-28'>Create a New Group</p> : <p className='font-barlow font-bold uppercase text-28'>Edit Group</p>}
           <div>
             <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
-            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' >Save</button>
+            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={handleSave}>Save</button>
           </div>
         </div>
         <div className='mt-8 grid grid-cols-5'>
