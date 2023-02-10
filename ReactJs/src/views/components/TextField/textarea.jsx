@@ -1,8 +1,8 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import { StyledTextField } from '../../pages/AdminSide/GroupManagement/style';
+import { StyledTextArea } from '../../pages/AdminSide/GroupManagement/style';
 
-const TextFields = ({ name, required, value, onChange, type, width = '250px', height = '40px', placeholder, valid }) => {
+const TextArea = ({ name, required, value, onChange, type, width = '250px', height = '120px', placeholder, valid }) => {
   return (
     <div className='text-sm font-barlow-regular'>
       <p>{name} {required && <span className='text-red-600'>*</span>}</p>
@@ -13,13 +13,17 @@ const TextFields = ({ name, required, value, onChange, type, width = '250px', he
         }}
         autoComplete="off"
       >
-        <StyledTextField
+        <StyledTextArea
           size='small'
           value={value}
           onChange={onChange}
           required={required ?? null}
           type={type}
           placeholder={placeholder}
+          multiline
+          InputProps={{
+            rows: 5
+          }}
         />
       </Box>
       <span hidden={valid || !required} className='text-ct4-red-1'>
@@ -29,4 +33,4 @@ const TextFields = ({ name, required, value, onChange, type, width = '250px', he
   );
 };
 
-export default TextFields;
+export default TextArea;

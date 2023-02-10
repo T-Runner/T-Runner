@@ -87,6 +87,29 @@ export const StyledTextField = styled(TextField)(() => ({
   },
 }));
 
+export const StyledTextArea = styled(TextField)(() => ({
+  "& input::placeholder": {
+    fontSize: "14px",
+    fontFamily: 'Barlow',
+  },
+  "& input": {
+    fontSize: "14px",
+    fontFamily: 'Barlow',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#dfdfdf',
+    },
+    '&:hover fieldset': {
+      borderColor: '#457900',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#457900',
+    },
+    height: '120px',
+  },
+}));
+
 export const StyledPagination = styled(Pagination)(() => ({
   "& button": {
     '&.Mui-selected': {

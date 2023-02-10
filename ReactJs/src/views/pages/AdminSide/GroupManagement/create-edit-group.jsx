@@ -9,10 +9,47 @@ import UploadImage from '../../../components/UploadImage';
 import { activeDatas, defaultGroup, groupTypeDatas, locationDatas } from '../../../../constants';
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
 import ModalConfirm from '../../../components/ModalConfirm';
+import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
+import TextArea from '../../../components/TextField/textarea';
 
 const CreateEditGroup = ({ onClose, action, data }) => {
   const [showModal, setShowModal] = useState(false);
   const [formState, setFormState] = useState(defaultGroup);
+  const [validForm, setValidForm] = useState({
+    groupName: true,
+    location: true,
+    groupType: true,
+    sport: true,
+    active: true
+  });
+
+  const validateForm = () => {
+    let isValid = true;
+
+    Object.keys(validForm).forEach(x => {
+      if (!formState[x] || formState[x].value <= 0) {
+        {
+          isValid = false;
+          validForm[x] = false;
+        }
+      }
+    });
+
+    if (!isValid) {
+      setValidForm({ ...validForm });
+      return false;
+    }
+    return true;
+  };
+  const handleSubmitForm = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    if (!validateForm()) {
+      return;
+    }
+  };
 
   const handleClose = () => {
     setShowModal(false);
@@ -23,6 +60,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
       ...formState,
       groupName: event.target.value,
     });
+    setValidForm({ ...validForm, groupName: !!event.target.value });
   };
 
   const handleChangeDescription = (event) => {
@@ -37,6 +75,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
       ...formState,
       location: event.target.value,
     });
+    setValidForm({ ...validForm, location: true });
   };
 
   const handleChangeGroupType = (event) => {
@@ -44,6 +83,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
       ...formState,
       groupType: event.target.value,
     });
+    setValidForm({ ...validForm, groupType: true });
   };
 
   const handleChangeActive = (event) => {
@@ -51,6 +91,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
       ...formState,
       active: event.target.value,
     });
+    setValidForm({ ...validForm, active: true });
   };
 
   const handleChangeSport = (event) => {
@@ -58,6 +99,7 @@ const CreateEditGroup = ({ onClose, action, data }) => {
       ...formState,
       sport: event.target.value,
     });
+    setValidForm({ ...validForm, sport: true });
   };
 
   const handleChangeWebsite = (event) => {
@@ -71,51 +113,58 @@ const CreateEditGroup = ({ onClose, action, data }) => {
     setFormState({ ...data });
   }, [data]);
 
+  useEffect(() => {
+    setValidForm({ ...validForm });
+  }, []);
+
   return (
     <div>
-      <div className='font-barlow font-semibold	flex'>
-        <p className='text-ct4-dark-green text-sm uppercase cursor-pointer' onClick={() => onClose()}>Groups</p>
-        <div className='mx-3 text-xs text-ct4-gray'>
-          <i className="fa-solid fa-chevron-right"></i>
+      <form onSubmit={handleSubmitForm}>
+        <div className='font-barlow font-semibold	flex'>
+          <p className='text-ct4-dark-green text-sm uppercase cursor-pointer' onClick={() => onClose()}>Groups</p>
+          <div className='mx-3 text-xs text-ct4-gray'>
+            <i className="fa-solid fa-chevron-right"></i>
+          </div>
+          {action == 'Create' ? <p className='text-ct4-gray-3 text-sm uppercase'>Create a New Group</p> : <p className='text-ct4-gray-3 text-sm uppercase'>Edit Group</p>}
         </div>
-        {action == 'Create' ? <p className='text-ct4-gray-3 text-sm uppercase'>Create a New Group</p> : <p className='text-ct4-gray-3 text-sm uppercase'>Edit Group</p>}
-      </div>
-      <div className='mt-5 flex justify-between'>
-        {action == 'Create' ? <p className='font-barlow font-bold uppercase text-28'>Create a New Group</p> : <p className='font-barlow font-bold uppercase text-28'>Edit Group</p>}
-        <div>
-          <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
-          <button className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={() => setShowModal(true)}>Save</button>
-        </div>
-      </div>
-      <div className='mt-8 grid grid-cols-5'>
-        <div className='grid gap-y-4 col-span-2' >
-          <TextFields name='Group Name' required={true} width='600px' placeholder={'Group Name'} value={formState.groupName} onChange={handleChangeGroupName} />
-          <TextFields name='Description' required={false} width='600px' placeholder={'Description'} value={formState.desc} onChange={handleChangeDescription} />
-          <SingleSelect name='Location' required={true} width='600px' options={locationDatas} value={formState.location} onChange={handleChangeLocation} />
-          <TextFields name='Website' required={false} width='600px' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
-          <SingleSelect name='Group Type' required={true} width='600px' options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} />
-          <MultipleSelect name='Sport' required={true} value={formState.sport} onChange={handleChangeSport} />
-          <SingleSelect name='Active' required={true} width='600px' options={activeDatas} value={formState.active} onChange={handleChangeActive} />
-          <div className='-ml-3 font-barlow flex items-center'>
-            <Checkbox checkedIcon={<CheckedIcon />} checked={formState.checkbox} />
-            <p className='mr-2'>Make your club invite-only?</p>
-            <div className='tooltip cursor-pointer'>
-              <HelpMenuIcon />
-              <span className='tooltiptext-help-icon font-barlow px-6 pt-4 pb-6'>
-                <div className='flex '>
-                  <HelpMenuIcon stroke='#ffffff' />
-                  <p className='font-semibold text-14 ml-2'>Invite-Only Group</p>
-                </div>
-                <div className='mt-4 '>
-                  <p>Runners must request permission to join an invite-only Group.</p>
-                  <p className='mt-4'>Only admins can approve new Group members. Recent activity, club announcements, discussions and private group events will be hidden from non-members.</p>
-                </div>
-              </span>
-            </div>
+        <div className='mt-5 flex justify-between'>
+          {action == 'Create' ? <p className='font-barlow font-bold uppercase text-28'>Create a New Group</p> : <p className='font-barlow font-bold uppercase text-28'>Edit Group</p>}
+          <div>
+            <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
+            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' >Save</button>
           </div>
         </div>
-        <UploadImage img={formState.img} />
-      </div>
+        <div className='mt-8 grid grid-cols-5'>
+          <div className='grid gap-y-4 col-span-2' >
+            <TextFields name='Group Name' required={true} width='600px' placeholder={'Group Name'} value={formState.groupName} onChange={handleChangeGroupName} valid={validForm.groupName} />
+            <TextArea name='Description' required={false} width='600px' placeholder={'Description'} value={formState.desc} onChange={handleChangeDescription} />
+            <SingleSelect name='Location' required={true} width='600px' options={locationDatas} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
+            <TextFields name='Website' required={false} width='600px' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
+            <SingleSelect name='Group Type' required={true} width='600px' options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} valid={validForm.groupType} />
+            <MultipleSelect name='Sport' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />
+            <SingleSelectV2 name='Active' required={true} width='600px' options={activeDatas} value={formState.active} onChange={handleChangeActive} valid={validForm.active} />
+            <div className='-ml-3 font-barlow flex items-center'>
+              <Checkbox checkedIcon={<CheckedIcon />} />
+              <p className='mr-2'>Make your club invite-only?</p>
+              <div className='tooltip cursor-pointer'>
+                <HelpMenuIcon />
+                <span className='tooltiptext-help-icon font-barlow px-6 pt-4 pb-6'>
+                  <div className='flex '>
+                    <HelpMenuIcon stroke='#ffffff' />
+                    <p className='font-semibold text-14 ml-2'>Invite-Only Group</p>
+                  </div>
+                  <div className='mt-4 '>
+                    <p>Runners must request permission to join an invite-only Group.</p>
+                    <p className='mt-4'>Only admins can approve new Group members. Recent activity, club announcements, discussions and private group events will be hidden from non-members.</p>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+          <UploadImage img={formState.img} />
+        </div>
+      </form>
+
       {showModal && <ModalConfirm isShow={showModal} onClose={handleClose} text='Are you sure you want to save it? This action cannot be undone.' />}
     </div>
   );

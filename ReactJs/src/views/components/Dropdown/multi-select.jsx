@@ -23,34 +23,40 @@ const sportDatas = [
   "Other",
 ];
 
-const MultipleSelect = ({ name, required, value = [], onChange }) => {
+const MultipleSelect = ({ name, required, value = [], onChange, valid }) => {
 
   return (
-    <div className='text-sm font-barlow-regular'>
-      <p >{name} {required && <span className='text-red-600'>*</span>}</p>
-      <StyledFormControl sx={{ width: 600 }}>
-        <StyledSelect
-          multiple
-          value={value}
-          onChange={onChange}
-          sx={{ marginTop: '4px', height: '40px' }}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {sportDatas.length > 0 && sportDatas.map((item) => (
-            <StyledMenuItem
-              key={item}
-              value={item}
-            >
-              <ListItemIcon>
-                <Checkbox checked={value.indexOf(item) > -1} checkedIcon={<CheckedIcon />} />
-              </ListItemIcon>
-              {item}
-            </StyledMenuItem>
-          ))}
-        </StyledSelect>
-      </StyledFormControl>
+    <div>
+      <div className='text-sm font-barlow-regular'>
+        <p >{name} {required && <span className='text-red-600'>*</span>}</p>
+        <StyledFormControl sx={{ width: 600 }}>
+          <StyledSelect
+            multiple
+            value={value}
+            onChange={onChange}
+            sx={{ marginTop: '4px', height: '40px' }}
+            renderValue={(selected) => selected.join(', ')}
+            MenuProps={MenuProps}
+          >
+            {sportDatas.length > 0 && sportDatas.map((item) => (
+              <StyledMenuItem
+                key={item}
+                value={item}
+              >
+                <ListItemIcon>
+                  <Checkbox checked={value.indexOf(item) > -1} checkedIcon={<CheckedIcon />} />
+                </ListItemIcon>
+                {item}
+              </StyledMenuItem>
+            ))}
+          </StyledSelect>
+        </StyledFormControl>
+      </div>
+      <span hidden={valid || !required} className='text-ct4-red-1 text-sm font-barlow-regular'>
+        {name} is required
+      </span>
     </div>
+
   );
 };
 
