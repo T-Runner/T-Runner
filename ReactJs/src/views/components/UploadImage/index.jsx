@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CameraIcon from '../Icons/camera-icon';
 import RecycleBinIcon from '../Icons/recycle-bin-icon';
 import UploadImageIcon from '../Icons/upload-image-icon';
 
-const UploadImage = () => {
+const UploadImage = ({ img }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [image, setImage] = useState('');
 
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -20,9 +21,18 @@ const UploadImage = () => {
     setSelectedImage(event.target.files[0]);
   };
 
+  const handleRemove = () => {
+    setSelectedImage(null);
+    setImage('');
+  };
+
+  useEffect(() => {
+    setImage(img);
+  }, [img]);
+
   const renderImage = () => {
     return (<div>
-      <img alt="not found" className='w-200 h-200' src={URL.createObjectURL(selectedImage)} />
+      <img alt="not found" className='w-200 h-200' src={selectedImage ? URL.createObjectURL(selectedImage) : image} />
       <br />
       <div className='flex justify-center'>
         <div >
@@ -35,12 +45,12 @@ const UploadImage = () => {
           </label>
         </div>
         <div className='mx-5'>|</div>
-        <div className='flex items-center cursor-pointer' onClick={() => setSelectedImage(null)}>
+        <div className='flex items-center cursor-pointer' onClick={handleRemove}>
           <RecycleBinIcon />
           <button className='ml-1 uppercase font-barlow font-semibold text-ct4-dark-green' >Remove</button>
         </div>
       </div>
-    </div>);
+    </div>)
   };
 
   const renderUploadField = () => {
@@ -54,17 +64,17 @@ const UploadImage = () => {
         </div>
       </div>
       <input id="dropzone-file" type="file" className="hidden" accept="image/*" onChange={handleChange} />
-    </label>);
+    </label>)
   };
 
   return (
     <div className='text-sm font-barlow-regular col-span-2'>
       <p >Group Picture</p>
       <div className="flex items-center w-full mt-2" >
-        {selectedImage ? renderImage() : renderUploadField()}
+        {selectedImage || image ? renderImage() : renderUploadField()}
       </div>
     </div>
-  );
+  )
 };
 
 export default UploadImage;

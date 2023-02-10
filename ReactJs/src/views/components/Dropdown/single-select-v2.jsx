@@ -1,8 +1,13 @@
 import { Box } from '@mui/material';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledFormControl, StyledMenuItem, StyledSelect } from '../../pages/AdminSide/GroupManagement/style';
 
-const SingleSelect = ({ name, width = '600px', required, options, value = '', onChange, valid }) => {
+const SingleSelectV2 = ({ name, width = '600px', required, options, value = 'Enable', onChange, valid }) => {
+  const [defaultValue, setDefaultValue] = useState('')
+
+  useEffect(() => {
+    setDefaultValue(value);
+  }, [value])
 
   return (
     <div className='text-sm font-barlow-regular'>
@@ -14,13 +19,10 @@ const SingleSelect = ({ name, width = '600px', required, options, value = '', on
       >
         <StyledFormControl fullWidth>
           <StyledSelect
-            value={value}
+            value={defaultValue}
             onChange={onChange}
             size='small'
             displayEmpty
-            renderValue={
-              value !== '' ? undefined : name == 'Active' ? () => <ul>Enable</ul> : () => <ul>{name}</ul>
-            }
           >
             {options.length > 0 && options.map((item, index) => (
               <StyledMenuItem value={item.value} key={index}>{item.value}</StyledMenuItem>
@@ -35,4 +37,4 @@ const SingleSelect = ({ name, width = '600px', required, options, value = '', on
   );
 };
 
-export default SingleSelect;
+export default SingleSelectV2;
