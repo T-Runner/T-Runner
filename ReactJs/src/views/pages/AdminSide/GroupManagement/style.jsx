@@ -74,25 +74,11 @@ export const StyledTextField = styled(TextField)(() => ({
     fontSize: "14px",
     fontFamily: 'Barlow',
   },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#dfdfdf',
-    },
-    '&:hover fieldset': {
-      borderColor: '#457900',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#457900',
-    },
-  },
-}));
-
-export const StyledTextArea = styled(TextField)(() => ({
-  "& input::placeholder": {
+  "& textarea::placeholder": {
     fontSize: "14px",
     fontFamily: 'Barlow',
   },
-  "& input": {
+  "& textarea": {
     fontSize: "14px",
     fontFamily: 'Barlow',
   },
@@ -106,7 +92,6 @@ export const StyledTextArea = styled(TextField)(() => ({
     '&.Mui-focused fieldset': {
       borderColor: '#457900',
     },
-    height: '120px',
   },
 }));
 

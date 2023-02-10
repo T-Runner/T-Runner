@@ -12,7 +12,7 @@ import ModalConfirm from '../../../components/ModalConfirm';
 import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
 import TextArea from '../../../components/TextField/textarea';
 
-const CreateEditGroup = ({ onClose, action, data }) => {
+const CreateEditGroup = ({ onClose, isCreate, isEdit, data }) => {
   const [showModal, setShowModal] = useState(false);
   const [formState, setFormState] = useState(defaultGroup);
   const [validForm, setValidForm] = useState({
@@ -133,10 +133,10 @@ const CreateEditGroup = ({ onClose, action, data }) => {
           <div className='mx-3 text-xs text-ct4-gray'>
             <i className="fa-solid fa-chevron-right"></i>
           </div>
-          {action == 'Create' ? <p className='text-ct4-gray-3 text-sm uppercase'>Create a New Group</p> : <p className='text-ct4-gray-3 text-sm uppercase'>Edit Group</p>}
+          <p className='text-ct4-gray-3 text-sm uppercase'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
         </div>
         <div className='mt-5 flex justify-between'>
-          {action == 'Create' ? <p className='font-barlow font-bold uppercase text-28'>Create a New Group</p> : <p className='font-barlow font-bold uppercase text-28'>Edit Group</p>}
+          <p className='font-barlow font-bold uppercase text-28'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
           <div>
             <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
             <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={handleSave}>Save</button>
