@@ -19,7 +19,7 @@ const SingleSelect = ({ name, width = '600px', required, options, value = '', on
             size='small'
             displayEmpty
             renderValue={
-              value !== '' ? undefined : name == 'Active' ? () => <ul>Enable</ul> : () => <ul>{name}</ul>
+              value !== '' ? undefined : () => <ul>{name}</ul>
             }
           >
             {options.length > 0 && options.map((item, index) => (

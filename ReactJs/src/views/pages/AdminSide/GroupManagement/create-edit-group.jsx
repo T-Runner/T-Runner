@@ -12,7 +12,7 @@ import ModalConfirm from '../../../components/ModalConfirm';
 import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
 import TextArea from '../../../components/TextField/textarea';
 
-const CreateEditGroup = ({ onClose, isCreate, isEdit, data }) => {
+const CreateEditGroup = ({ onClose, isCreate, data }) => {
   const [showModal, setShowModal] = useState(false);
   const [formState, setFormState] = useState(defaultGroup);
   const [validForm, setValidForm] = useState({

@@ -39,7 +39,7 @@ const GroupManagement = () => {
         {isCreate || isEdit ?
           <CreateEditGroup onClose={handleClose} isCreate={isCreate} data={group} />
           :
-          <ListGroup handleEdit={handleEdit} handleCreate={handleCreate} />
+          <ListGroup handleEdit={handleEdit} handleCreate={handleCreate} data={group} />
         }
       </PageLayout>
     </div>
