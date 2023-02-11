@@ -1,0 +1,23 @@
+import { Checkbox } from "@mui/material";
+import React, { useState } from "react";
+import MultipleSelect from "../../../components/Dropdown/multi-select";
+import SingleSelect from "../../../components/Dropdown/single-select";
+import CheckedIcon from "../../../components/Icons/checked-icon";
+import TextFields from "../../../components/TextField";
+import "../../../../styles/tooltip.css";
+import UploadImage from "../../../components/UploadImage";
+import { activeDatas, sportTypeDatas } from "../../../../constants";
+import HelpMenuIcon from "../../../components/Icons/help-menu-icon";
+import ModalConfirm from "../../../components/ModalConfirm";
+
+const CreateEditSport = ({ onClose }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  return <div>Sport</div>;
+};
+
+export default CreateEditSport;
