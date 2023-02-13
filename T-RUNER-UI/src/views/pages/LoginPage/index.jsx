@@ -12,18 +12,9 @@ import SlashIcon from "../../../views/components/Icons/icon-slash";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 
-const theme = createTheme({
-  palette: {
-    green: {
-      main: "bg-ct4-green-neon",
-      contrastText: "#333",
-    },
-  },
-});
-
 const LoginPage = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const isError = false;//useSelector((state) => state.auth.error);
+  const isError = useSelector((state) => state.auth.error);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,6 +39,8 @@ const LoginPage = () => {
     e.preventDefault();
     if (email === "tuananh@gmail.com" && password === "12345678") {
       const isLogin = await login(email, password);
+    console.log("isLogin", isLogin);
+
       const userProfile = {
         email: email,
         name: "Tuan Anh",
@@ -84,12 +77,9 @@ const LoginPage = () => {
       </div>
       <div className="w-0.3 bg-white ml-0.35 h-400 p-7">
         <div className="grid gap-2">
-          <label className="font-barlow text-ct4-dark text-3xl font-bold italic uppercase">
+          <label className="font-barlow text-ct4-dark text-3xl font-bold italic uppercase pb-3">
             Log In
           </label>
-          {/* <div className="w-11 h-11 rounded-full bg-green-800">
-            <i className="fas fa-lock text-4xl"/>
-          </div> */}
         </div>
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -104,7 +94,8 @@ const LoginPage = () => {
           />
           <button
             type="submit"
-            className="btn bg-ct4-green-neon my-6 font-barlow h-12 text-ct4-dark text-xl uppercase"
+            className="btn bg-ct4-green-neon my-6 font-barlow h-12 text-ct4-dark text-xl uppercase
+            shadow-md"
           >
             Log In
           </button>
