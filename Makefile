@@ -37,7 +37,7 @@ deploy-prod: setup-python
 .PHONY: deploy-prod
 
 deploy-dev:
-	docker compose --compatibility --profile=dev up -d --no-deps --force-recreate --remove-orphans
+	sudo docker compose --compatibility --profile=dev up -d --no-deps --force-recreate --remove-orphans
 .PHONY:
 
 setup-python:
