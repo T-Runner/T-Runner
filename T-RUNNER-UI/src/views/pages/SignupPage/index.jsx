@@ -77,7 +77,7 @@ class SignupPage extends Component {
                         >
                             Agree and Sign Up
                         </button>
-                        {this.props.isLoggedIn && <Navigate to='/home' replace={true} />}
+                        {this.props.isLoggedIn && <Navigate to='/dashboard' replace={true} />}
                     </div>
 
                 </form>
