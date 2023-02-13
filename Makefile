@@ -36,9 +36,9 @@ deploy-prod: setup-python
 	docker-compose --compatibility --profile=prod up -d --no-deps --force-recreate --remove-orphans
 .PHONY: deploy-prod
 
-deploy-dev: setup-python
+deploy-dev:
 	docker-compose --compatibility --profile=dev up -d --no-deps --force-recreate --remove-orphans
-.PHONY: deploy-dev
+.PHONY:
 
 setup-python:
 	if [ ! -d "$(CURDIR)/pyenv" ]; then \
