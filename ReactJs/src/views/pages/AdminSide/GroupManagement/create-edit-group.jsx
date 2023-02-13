@@ -129,17 +129,17 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
     <div>
       <form onSubmit={handleSubmitForm}>
         <div className='font-barlow font-semibold	flex'>
-          <p className='text-ct4-dark-green text-sm uppercase cursor-pointer' onClick={() => onClose()}>Groups</p>
+          <p className='text-ct4-dark-green text-sm uppercase cursor-pointer font-barlow	' onClick={() => onClose()}>Groups</p>
           <div className='mx-3 text-xs text-ct4-gray'>
             <i className="fa-solid fa-chevron-right"></i>
           </div>
           <p className='text-ct4-gray-3 text-sm uppercase'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
         </div>
         <div className='mt-5 flex justify-between'>
-          <p className='font-barlow font-bold uppercase text-28'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
+          <p className='font-barlow font-semibold uppercase text-28'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
           <div>
-            <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
-            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={handleSave}>Save</button>
+            <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-semibold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
+            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-semibold text-sm rounded' onClick={handleSave}>Save</button>
           </div>
         </div>
         <div className='mt-8 grid grid-cols-5'>

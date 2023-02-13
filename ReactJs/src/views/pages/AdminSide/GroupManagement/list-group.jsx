@@ -1,5 +1,5 @@
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { activeDatas, defaultGroup, groupData, groupTypeDatas, locationDatas } from '../../../../constants';
 import FilterIcon from '../../../components/Icons/filter-icon';
 import Paginations from '../../../components/Pagination';
@@ -29,7 +29,7 @@ const ListGroup = ({ handleEdit, handleCreate }) => {
   return (
     <div>
       <div className='flex justify-between'>
-        <p className='uppercase font-barlow font-bold text-28'>Groups</p>
+        <p className='uppercase font-barlow font-semibold text-28'>Groups</p>
         <button className='uppercase w-189 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={() => handleCreate()}>Create a New Group</button>
       </div>
       <div>
