@@ -149,7 +149,7 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
             <SingleSelect name='Location' required={true} options={locationDatas} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
             <TextFields name='Website' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
             <SingleSelect name='Group Type' required={true} options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} valid={validForm.groupType} />
-            <MultipleSelect name='Sport' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />
+            <MultipleSelect name='Sport' width='600px' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />
             <SingleSelectV2 name='Active' required={true} options={activeDatas} value={formState.active} onChange={handleChangeActive} valid={validForm.active} />
             <div className='-ml-3 font-barlow flex items-center'>
               <Checkbox checkedIcon={<CheckedIcon />} />

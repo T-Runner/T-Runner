@@ -9,16 +9,22 @@ import GroupTR from './groupTR';
 import { StyledTableCell } from './style';
 import CloseIcon from '@mui/icons-material/Close';
 import SingleSelect from '../../../components/Dropdown/single-select';
-import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
 import MultipleSelect from '../../../components/Dropdown/multi-select';
 
-const ListGroup = ({ handleEdit, handleCreate, data }) => {
+const ListGroup = ({ handleEdit, handleCreate }) => {
   const [formState, setFormState] = useState(defaultGroup);
-  const [showFilter, setShowFilter] = useState(false)
+  const [showFilter, setShowFilter] = useState(false);
 
-  useEffect(() => {
-    setFormState({ ...data });
-  }, [data]);
+  const handleCloseFilter = () => {
+    setShowFilter(false);
+    setFormState(defaultGroup);
+  };
+
+  const handleResetFilter = () => {
+    setFormState(defaultGroup);
+  };
+
+  console.log('location', formState.location)
 
   return (
     <div>
@@ -43,11 +49,17 @@ const ListGroup = ({ handleEdit, handleCreate, data }) => {
                 <SingleSelect name='Group Type' width='275px' options={groupTypeDatas} value={formState.groupType} onChange={(event) => setFormState({ ...formState, groupType: event.target.value, })} />
                 <SingleSelect name='Active' width='275px' options={activeDatas} value={formState.active} onChange={(event) => setFormState({ ...formState, active: event.target.value, })} />
                 <div className='flex items-end'>
-                  <button className='uppercase w-24 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3'>Reset</button>
-                  <button className='uppercase w-24 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' >Apply</button>
+                  <button className='uppercase w-24 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={handleResetFilter}>Reset</button>
+                  {
+                    formState.location == '' && formState.sport.length == 0 && formState.groupType == '' && formState.active == ''
+                      ?
+                      <button className='uppercase w-24 h-10 bg-ct4-disable text-ct4-disable-2 font-barlow font-bold text-sm rounded'>Apply</button>
+                      :
+                      <button className='uppercase w-24 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded'>Apply</button>
+                  }
                 </div>
               </div>
-              <div className='cursor-pointer' onClick={() => setShowFilter(false)}>
+              <div className='cursor-pointer' onClick={handleCloseFilter}>
                 <CloseIcon />
               </div>
             </div>

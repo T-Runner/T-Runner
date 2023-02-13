@@ -29,6 +29,8 @@ module.exports = {
         'ct4-soft-green': '#eaf2d9',
         'ct4-border-gray': '#ececec',
         'ct4-border-gray-2': '#d0d0d0',
+        'ct4-disable': '#f1f1f1',
+        'ct4-disable-2': '#bfbfbf'
       },
       fontFamily: {
         'tnr': '"Times New Roman"',
