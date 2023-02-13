@@ -76,7 +76,7 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
       ...formState,
       location: event.target.value,
     });
-    setValidForm({ ...validForm, location: true });
+    setValidForm({ ...validForm, location: !!event.target.value });
   };
 
   const handleChangeGroupType = (event) => {
@@ -146,7 +146,7 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
           <div className='grid gap-y-4 col-span-2' >
             <TextFields name='Group Name' required={true} placeholder={'Group Name'} value={formState.groupName} onChange={handleChangeGroupName} valid={validForm.groupName} />
             <TextArea name='Description' placeholder={'Description'} value={formState.desc} onChange={handleChangeDescription} />
-            <SingleSelect name='Location' required={true} options={locationDatas} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
+            <TextFields name='Location' required={true} placeholder={'Location'} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
             <TextFields name='Website' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
             <SingleSelect name='Group Type' required={true} options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} valid={validForm.groupType} />
             <MultipleSelect name='Sport' width='600px' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />

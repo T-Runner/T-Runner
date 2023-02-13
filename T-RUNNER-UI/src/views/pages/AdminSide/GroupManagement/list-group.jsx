@@ -10,6 +10,7 @@ import { StyledTableCell } from './style';
 import CloseIcon from '@mui/icons-material/Close';
 import SingleSelect from '../../../components/Dropdown/single-select';
 import MultipleSelect from '../../../components/Dropdown/multi-select';
+import TextFields from '../../../components/TextField';
 
 const ListGroup = ({ handleEdit, handleCreate }) => {
   const [formState, setFormState] = useState(defaultGroup);
@@ -44,7 +45,7 @@ const ListGroup = ({ handleEdit, handleCreate }) => {
           <div className='w-full h-100 border border-ct4-border-gray rounded mt-3'>
             <div className='flex justify-between cursor-pointer p-4'>
               <div className='flex gap-8'>
-                <SingleSelect name='Location' width='275px' options={locationDatas} value={formState.location} onChange={(event) => setFormState({ ...formState, location: event.target.value, })} />
+                <TextFields name='Location' width='275px' placeholder={'Location'} value={formState.location} onChange={(event) => setFormState({ ...formState, location: event.target.value, })} />
                 <MultipleSelect name='Sport' width='275px' value={formState.sport} onChange={(event) => setFormState({ ...formState, sport: event.target.value, })} />
                 <SingleSelect name='Group Type' width='275px' options={groupTypeDatas} value={formState.groupType} onChange={(event) => setFormState({ ...formState, groupType: event.target.value, })} />
                 <SingleSelect name='Active' width='275px' options={activeDatas} value={formState.active} onChange={(event) => setFormState({ ...formState, active: event.target.value, })} />
