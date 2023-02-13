@@ -59,18 +59,69 @@ export const exercisesdata = [
   createDataExercise('https://www.mensjournal.com/wp-content/uploads/2018/05/1380-dumbbell-curl1.jpg?quality=86&strip=all', 'Dumbbell workout'),
 ];
 
-const createDataGroups = (groupName, desc, location, sport, groupType, createdDate, totalRunners, active) => {
-  return { groupName, desc, location, sport, groupType, createdDate, totalRunners, active };
+//fake data group list
+const createDataGroups = (groupName, desc, location, sport, groupType, createdDate, totalRunners, active, website, checkbox, img) => {
+  return { groupName, desc, location, sport, groupType, createdDate, totalRunners, active, website, checkbox, img };
 };
 
 export const groupData = [
-  createDataGroups('Group A', 'We are the one. We ride, we run...', 'Tucson, Oklahoma', 'Canoe', 'Company/Workplace', '01/15/2023', 200, 'Disabled'),
-  createDataGroups('Group B', 'Enjoy the moment that you...', 'Sioux Falls, Wisconsin', 'CrossFit', 'Other ', '01/07/2023', 178, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
-  createDataGroups('Group C', 'No description', 'Baytown, Oregon', 'E-Bike Ride', 'Racing Team', '12/21/2022', 23, 'Disabled'),
+  createDataGroups('Group A', 'We are the one. We ride, we run', 'Hà Nội', ['Run'], 'Company/Workplace', '01/15/2023', 200, 'Enable', 'https://www.tma.vn/', true, 'https://kingscampsandfitness.com/wp-content/uploads/2016/06/Trail-Running-Square.jpg'),
+  createDataGroups('Group B', 'Enjoy the moment that your', 'Hà Nam', ['Row'], 'Other', '01/07/2023', 178, 'Enable', 'https://www.tma.vn/', true, 'https://img.freepik.com/premium-vector/badminton-rackets-flat-square-icon-with-shadows_47586-1.jpg'),
+  createDataGroups('Group C', 'No description', 'Hải Dương', ['Run', 'Ride'], 'Racing Team', '12/21/2022', 23, 'Disable', '', false, 'https://img.freepik.com/free-psd/reasons-ride-bike-ad-template-square-flyer_23-2148755171.jpg'),
+  createDataGroups('Group A', 'We are the one. We ride, we run', 'Hà Nội', ['Run'], 'Company/Workplace', '01/15/2023', 200, 'Enable', 'https://www.tma.vn/', true, 'https://kingscampsandfitness.com/wp-content/uploads/2016/06/Trail-Running-Square.jpg'),
+  createDataGroups('Group B', 'Enjoy the moment that your', 'Hà Nam', ['Row'], 'Other', '01/07/2023', 178, 'Enable', 'https://www.tma.vn/', true, 'https://img.freepik.com/premium-vector/badminton-rackets-flat-square-icon-with-shadows_47586-1.jpg'),
+  createDataGroups('Group C', 'No description', 'Hải Dương', ['Run', 'Ride'], 'Racing Team', '12/21/2022', 23, 'Disable', '', false, 'https://img.freepik.com/free-psd/reasons-ride-bike-ad-template-square-flyer_23-2148755171.jpg'),
+  createDataGroups('Group A', 'We are the one. We ride, we run', 'Hà Nội', ['Run'], 'Company/Workplace', '01/15/2023', 200, 'Enable', 'https://www.tma.vn/', true, 'https://kingscampsandfitness.com/wp-content/uploads/2016/06/Trail-Running-Square.jpg'),
+  createDataGroups('Group B', 'Enjoy the moment that your', 'Hà Nam', ['Row'], 'Other', '01/07/2023', 178, 'Enable', 'https://www.tma.vn/', true, 'https://img.freepik.com/premium-vector/badminton-rackets-flat-square-icon-with-shadows_47586-1.jpg'),
+  createDataGroups('Group C', 'No description', 'Hải Dương', ['Run', 'Ride'], 'Racing Team', '12/21/2022', 23, 'Disable', '', false, 'https://img.freepik.com/free-psd/reasons-ride-bike-ad-template-square-flyer_23-2148755171.jpg'),
 ];
+
+export const defaultGroup = {
+  groupName: '',
+  desc: '',
+  location: '',
+  sport: [],
+  groupType: '',
+  createdDate: '',
+  totalRunners: 0,
+  active: '',
+  website: '',
+  checkbox: false,
+  img: ''
+}
+//fake data location list
+const createLocationData = (value) => {
+  return { value };
+};
+
+export const locationDatas = [
+  createLocationData('Hà Nội'),
+  createLocationData('Hà Nam'),
+  createLocationData('Hà Tĩnh'),
+  createLocationData('Hải Dương'),
+  createLocationData('Hải Phòng'),
+];
+
+//fake data group type
+const createGroupTypeData = (value) => {
+  return { value };
+};
+
+export const groupTypeDatas = [
+  createGroupTypeData('Racing Team'),
+  createGroupTypeData('Company/Workplace'),
+  createGroupTypeData('Club'),
+  createGroupTypeData('Shop'),
+  createGroupTypeData('Other'),
+];
+
+//fake data active
+const createActiveData = (value) => {
+  return { value };
+};
+
+export const activeDatas = [
+  createActiveData('Enable'),
+  createActiveData('Disable'),
+];
+
