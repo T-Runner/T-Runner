@@ -1,5 +1,5 @@
 deploy-dev:
-	docker compose --compatibility --profile=dev up -d --no-deps --force-recreate --remove-orphans
+	docker-compose --compatibility --profile=dev up -d --no-deps --force-recreate --remove-orphans
 .PHONY: deploy-dev
 
 clean:
