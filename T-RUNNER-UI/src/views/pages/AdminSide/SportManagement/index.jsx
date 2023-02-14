@@ -8,9 +8,9 @@ const SportManagement = () => {
       <PageLayout>
         <div>
           <div className="flex justify-between">
-            <p className="uppercase font-barlow font-bold text-28">sport</p>
+            <p className="uppercase font-barlow font-bold text-28">Sports</p>
             <button className="uppercase w-189 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded">
-              create a new sport
+              Create a New Sport
             </button>
           </div>
           <ListSport />
