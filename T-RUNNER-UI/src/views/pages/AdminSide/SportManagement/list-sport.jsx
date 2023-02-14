@@ -30,14 +30,14 @@ const ListSport = ({ actionOpen, actionClose }) => {
             <TableHead sx={{ textTransform: "uppercase" }}>
               <TableRow>
                 <StyledTableCell></StyledTableCell>
-                <StyledTableCell align="left">SPORT NAME</StyledTableCell>
-                <StyledTableCell align="left">SPORT TYPE</StyledTableCell>
-                <StyledTableCell align="left">LAST MODIFIED BY</StyledTableCell>
+                <StyledTableCell align="left">sport name</StyledTableCell>
+                <StyledTableCell align="left">sport type</StyledTableCell>
+                <StyledTableCell align="left">last modified by</StyledTableCell>
                 <StyledTableCell align="left">
-                  LAST MODIFIED DATE
+                  last modified date
                 </StyledTableCell>
-                <StyledTableCell align="left">Active</StyledTableCell>
-                <StyledTableCell align="left">Action</StyledTableCell>
+                <StyledTableCell align="left">active</StyledTableCell>
+                <StyledTableCell align="left">action</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
