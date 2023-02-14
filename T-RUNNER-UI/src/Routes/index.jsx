@@ -15,14 +15,10 @@ import SportManagement from '../views/pages/AdminSide/SportManagement';
 import Dashboard from '../views/pages/AdminSide/Dashboard';
 
 const Router = () => {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   return (
     <Routes>
-      <Route
-        exact
-        path='/'
-        element={<PrivateRoute isLoggedIn={isLoggedIn} />}
-      />
+      <Route exact path='/' element={<PrivateRoute isLoggedIn={isLoggedIn} />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/home' element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
@@ -37,6 +33,6 @@ const Router = () => {
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );
-}
+};
 
 export default Router;

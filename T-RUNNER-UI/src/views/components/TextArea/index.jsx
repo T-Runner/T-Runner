@@ -1,17 +1,19 @@
-import React from 'react'
+import React from 'react';
 import Box from '@mui/material/Box';
 import { StyledTextField } from '../../pages/AdminSide/GroupManagement/style';
 
 const TextArea = ({ name, required, value, onChange, type, width = '600px', height = '120px', placeholder, valid }) => {
   return (
     <div className='text-sm font-barlow-regular'>
-      <p>{name} {required && <span className='text-red-600'>*</span>}</p>
+      <p>
+        {name} {required && <span className='text-red-600'>*</span>}
+      </p>
       <Box
-        component="form"
+        component='form'
         sx={{
-          '& .MuiTextField-root': { width: width, height: height, marginTop: '4px' },
+          '& .MuiTextField-root': { width: width, height: height, marginTop: '4px' }
         }}
-        autoComplete="off"
+        autoComplete='off'
       >
         <StyledTextField
           size='small'
