@@ -2,15 +2,8 @@ import React from 'react'
 import ArrowBottom from '../Icons/arrow-bottom';
 import TRunnerLogo from '../Icons/TRunner-logo';
 import TRunner from '../Icons/TRunner';
-import { useMsal } from '@azure/msal-react';
 
 const AdminHeader = () => {
-  const { instance } = useMsal();
-  let activeAccount;
-  if (instance) {
-    activeAccount = instance.getActiveAccount();
-  }
-
   return (
     <div className='flex justify-between items-center w-full h-14 bg-ct4-mossy-green'>
       <div className='flex items-center ml-6'>
@@ -21,7 +14,7 @@ const AdminHeader = () => {
       </div>
       <div className='flex items-center mr-6'>
         <img className='rounded-full w-9 h-9 mr-3' src={'https://ionicframework.com/docs/img/demos/avatar.svg'} />
-        <p className='text-white mr-3'>{activeAccount && activeAccount.name ? activeAccount.name : 'TRunner User'}</p>
+        <p className='text-white mr-3'>{'TRunner User'}</p>
         <ArrowBottom />
       </div>
     </div>

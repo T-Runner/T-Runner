@@ -39,8 +39,6 @@ const LoginPage = () => {
     e.preventDefault();
     if (email === "tuananh@gmail.com" && password === "12345678") {
       const isLogin = await login(email, password);
-    console.log("isLogin", isLogin);
-
       const userProfile = {
         email: email,
         name: "Tuan Anh",
