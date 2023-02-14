@@ -12,6 +12,7 @@ const GroupManagement = () => {
   const handleClose = () => {
     setIsCreated(false);
     setIsEdit(false);
+    setGroup(defaultGroup);
   };
 
   const handleCreate = () => {

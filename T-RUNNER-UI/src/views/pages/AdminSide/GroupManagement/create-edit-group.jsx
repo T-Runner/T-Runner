@@ -6,13 +6,12 @@ import CheckedIcon from '../../../components/Icons/checked-icon';
 import TextFields from '../../../components/TextField';
 import '../../../../styles/tooltip.css'
 import UploadImage from '../../../components/UploadImage';
-import { activeDatas, defaultGroup, groupTypeDatas, locationDatas } from '../../../../constants';
+import { activeDatas, defaultGroup, groupTypeDatas } from '../../../../constants';
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
 import ModalConfirm from '../../../components/ModalConfirm';
-import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
 import TextArea from '../../../components/TextField/textarea';
 
-const CreateEditGroup = ({ onClose, isCreate, isEdit, data }) => {
+const CreateEditGroup = ({ onClose, isCreate, data }) => {
   const [showModal, setShowModal] = useState(false);
   const [formState, setFormState] = useState(defaultGroup);
   const [validForm, setValidForm] = useState({
@@ -76,7 +75,7 @@ const CreateEditGroup = ({ onClose, isCreate, isEdit, data }) => {
       ...formState,
       location: event.target.value,
     });
-    setValidForm({ ...validForm, location: true });
+    setValidForm({ ...validForm, location: !!event.target.value });
   };
 
   const handleChangeGroupType = (event) => {
@@ -129,28 +128,28 @@ const CreateEditGroup = ({ onClose, isCreate, isEdit, data }) => {
     <div>
       <form onSubmit={handleSubmitForm}>
         <div className='font-barlow font-semibold	flex'>
-          <p className='text-ct4-dark-green text-sm uppercase cursor-pointer' onClick={() => onClose()}>Groups</p>
+          <p className='text-ct4-dark-green text-sm uppercase cursor-pointer font-barlow	' onClick={() => onClose()}>Groups</p>
           <div className='mx-3 text-xs text-ct4-gray'>
             <i className="fa-solid fa-chevron-right"></i>
           </div>
           <p className='text-ct4-gray-3 text-sm uppercase'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
         </div>
         <div className='mt-5 flex justify-between'>
-          <p className='font-barlow font-bold uppercase text-28'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
+          <p className='font-barlow font-semibold uppercase text-28'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
           <div>
-            <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
-            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={handleSave}>Save</button>
+            <button className='uppercase w-140 h-10 border border-ct4-border-gray font-barlow font-semibold text-sm rounded mr-3' onClick={() => onClose()}>Cancel</button>
+            <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-semibold text-sm rounded' onClick={handleSave}>Save</button>
           </div>
         </div>
-        <div className='mt-8 grid grid-cols-5'>
-          <div className='grid gap-y-4 col-span-2' >
+        <div className='mt-8 flex'>
+          <div className='grid gap-y-4' >
             <TextFields name='Group Name' required={true} placeholder={'Group Name'} value={formState.groupName} onChange={handleChangeGroupName} valid={validForm.groupName} />
             <TextArea name='Description' placeholder={'Description'} value={formState.desc} onChange={handleChangeDescription} />
-            <SingleSelect name='Location' required={true} options={locationDatas} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
+            <TextFields name='Location' required={true} placeholder={'Location'} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
             <TextFields name='Website' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
             <SingleSelect name='Group Type' required={true} options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} valid={validForm.groupType} />
-            <MultipleSelect name='Sport' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />
-            <SingleSelectV2 name='Active' required={true} options={activeDatas} value={formState.active} onChange={handleChangeActive} valid={validForm.active} />
+            <MultipleSelect name='Sport' width='600px' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />
+            <SingleSelect name='Active' required={true} options={activeDatas} value={formState.active} onChange={handleChangeActive} valid={validForm.active} />
             <div className='-ml-3 font-barlow flex items-center'>
               <Checkbox checkedIcon={<CheckedIcon />} />
               <p className='mr-2'>Make your club invite-only?</p>

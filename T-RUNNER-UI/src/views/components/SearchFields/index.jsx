@@ -1,12 +1,13 @@
 import React from 'react'
-import { FormControl, InputAdornment, TextField } from "@mui/material";
+import { FormControl, InputAdornment } from "@mui/material";
 import SearchIcon from '../Icons/search-icon';
+import { StyledTextField } from '../../pages/AdminSide/GroupManagement/style';
 
 const SearchFields = ({ placeholder = 'Search...', sx = { width: '360px', height: '40px', borderRadius: '4px' } }) => {
   return (
     <div>
       <FormControl>
-        <TextField
+        <StyledTextField
           placeholder={placeholder}
           size="small"
           variant="outlined"
