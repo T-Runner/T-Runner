@@ -4,6 +4,10 @@ import DefaultImage from "../../../components/Icons/default-image";
 import { StyledTableCell, StyledTableRow } from "./style";
 
 const SportTR = ({ item, actionOpen }) => {
+  const handleClick = () => {
+    actionOpen(item);
+  };
+
   return (
     <StyledTableRow>
       <StyledTableCell component="th" scope="row">
@@ -14,7 +18,7 @@ const SportTR = ({ item, actionOpen }) => {
       <StyledTableCell align="left">{item.lastModifiedBy}</StyledTableCell>
       <StyledTableCell align="left">{item.lastModifiedDate}</StyledTableCell>
       <StyledTableCell align="left">{item.active}</StyledTableCell>
-      <StyledTableCell onClick={actionOpen} align="left">
+      <StyledTableCell onClick={handleClick} align="left">
         <ActionIcon />
       </StyledTableCell>
     </StyledTableRow>

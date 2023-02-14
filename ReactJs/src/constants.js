@@ -432,6 +432,15 @@ export const sportData = [
   ),
 ];
 
+export const defautSport = {
+  sportName: "",
+  sportType: "",
+  lastModifiedBy: "",
+  lastModifiedDate: "",
+  active: "",
+  img: "",
+};
+
 //fake data active
 const createSportTypeData = (value) => {
   return { value };

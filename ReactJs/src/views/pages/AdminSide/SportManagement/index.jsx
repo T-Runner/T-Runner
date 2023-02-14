@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import PageLayout from "../../../components/PageLayout";
 import CreateEditSport from "./create-edit-sport";
 import ListSport from "./list-sport";
+import { defautSport } from "../../../../constants";
 
 const SportManagement = () => {
   const [isCreate, setIsCreated] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
-  const handleClose = () => {
+  const [sport, setSport] = useState(defautSport);
+  const handleCloseCreate = () => {
     setIsCreated(false);
   };
 
@@ -14,24 +16,34 @@ const SportManagement = () => {
     setIsCreated(true);
   };
 
-  const handleOpenEdit = () => {
+  const handleOpenEdit = (item) => {
     setIsOpenEdit(true);
+    setSport({
+      sportName: item.sportName,
+      sportType: item.sportType,
+      active: item.active,
+    });
   };
 
   const handleCloseEdit = () => {
     setIsOpenEdit(false);
   };
 
-  useEffect(() => {
-    console.log(isOpenEdit);
-    console.log(isOpenEdit);
-  }, [isOpenEdit]);
-
   return (
     <div>
       <PageLayout>
         {isCreate ? (
-          <CreateEditSport onClose={handleClose} />
+          <CreateEditSport
+            onClose={handleCloseCreate}
+            action="create a new sport"
+            sport={defautSport}
+          />
+        ) : isOpenEdit ? (
+          <CreateEditSport
+            onClose={handleCloseEdit}
+            action="edit sport"
+            sport={sport}
+          />
         ) : (
           <div>
             <div className="flex justify-between">

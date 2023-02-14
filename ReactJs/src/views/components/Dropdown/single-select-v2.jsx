@@ -1,20 +1,26 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyledFormControl,
   StyledMenuItem,
   StyledSelect,
 } from "../../pages/AdminSide/GroupManagement/style";
 
-const SingleSelect = ({
+const SingleSelectV2 = ({
   name,
   width = "600px",
   required,
   options,
-  value = "",
+  value = "Enable",
   onChange,
   valid,
 }) => {
+  const [defaultValue, setDefaultValue] = useState("");
+
+  useEffect(() => {
+    setDefaultValue(value);
+  }, [value]);
+
   return (
     <div className="text-sm font-barlow-regular">
       <p>
@@ -27,11 +33,10 @@ const SingleSelect = ({
       >
         <StyledFormControl fullWidth>
           <StyledSelect
-            value={value}
+            value={defaultValue}
             onChange={onChange}
             size="small"
             displayEmpty
-            renderValue={value !== "" ? undefined : () => <ul>{name}</ul>}
           >
             {options.length > 0 &&
               options.map((item, index) => (
@@ -49,4 +54,4 @@ const SingleSelect = ({
   );
 };
 
-export default SingleSelect;
+export default SingleSelectV2;
