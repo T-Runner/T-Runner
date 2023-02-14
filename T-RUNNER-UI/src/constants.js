@@ -213,7 +213,7 @@ export const groupData = [
     "Company/Workplace",
     "01/15/2023",
     200,
-    "Enable",
+    "Enabled",
     "https://www.tma.vn/",
     true,
     "https://kingscampsandfitness.com/wp-content/uploads/2016/06/Trail-Running-Square.jpg"
@@ -226,7 +226,7 @@ export const groupData = [
     "Other",
     "01/07/2023",
     178,
-    "Enable",
+    "Enabled",
     "https://www.tma.vn/",
     true,
     "https://img.freepik.com/premium-vector/badminton-rackets-flat-square-icon-with-shadows_47586-1.jpg"
@@ -239,7 +239,7 @@ export const groupData = [
     "Racing Team",
     "12/21/2022",
     23,
-    "Disable",
+    "Disabled",
     "",
     false,
     "https://img.freepik.com/free-psd/reasons-ride-bike-ad-template-square-flyer_23-2148755171.jpg"
@@ -252,7 +252,7 @@ export const groupData = [
     "Company/Workplace",
     "01/15/2023",
     200,
-    "Enable",
+    "Enabled",
     "https://www.tma.vn/",
     true,
     "https://kingscampsandfitness.com/wp-content/uploads/2016/06/Trail-Running-Square.jpg"
@@ -265,7 +265,7 @@ export const groupData = [
     "Other",
     "01/07/2023",
     178,
-    "Enable",
+    "Enabled",
     "https://www.tma.vn/",
     true,
     "https://img.freepik.com/premium-vector/badminton-rackets-flat-square-icon-with-shadows_47586-1.jpg"
@@ -278,7 +278,7 @@ export const groupData = [
     "Racing Team",
     "12/21/2022",
     23,
-    "Disable",
+    "Disabled",
     "",
     false,
     "https://img.freepik.com/free-psd/reasons-ride-bike-ad-template-square-flyer_23-2148755171.jpg"
@@ -291,7 +291,7 @@ export const groupData = [
     "Company/Workplace",
     "01/15/2023",
     200,
-    "Enable",
+    "Enabled",
     "https://www.tma.vn/",
     true,
     "https://kingscampsandfitness.com/wp-content/uploads/2016/06/Trail-Running-Square.jpg"
@@ -304,7 +304,7 @@ export const groupData = [
     "Other",
     "01/07/2023",
     178,
-    "Enable",
+    "Enabled",
     "https://www.tma.vn/",
     true,
     "https://img.freepik.com/premium-vector/badminton-rackets-flat-square-icon-with-shadows_47586-1.jpg"
@@ -317,7 +317,7 @@ export const groupData = [
     "Racing Team",
     "12/21/2022",
     23,
-    "Disable",
+    "Disabled",
     "",
     false,
     "https://img.freepik.com/free-psd/reasons-ride-bike-ad-template-square-flyer_23-2148755171.jpg"
@@ -332,7 +332,7 @@ export const defaultGroup = {
   groupType: "",
   createdDate: "",
   totalRunners: 0,
-  active: "Enable",
+  active: "Enabled",
   website: "",
   checkbox: false,
   img: "",
@@ -369,8 +369,8 @@ const createActiveData = (value) => {
 };
 
 export const activeDatas = [
-  createActiveData("Enable"),
-  createActiveData("Disable"),
+  createActiveData("Enabled"),
+  createActiveData("Disabled"),
 ];
 
 //fake data sport
@@ -418,21 +418,21 @@ export const sportData = [
     "Foot Sports",
     "Deanna Daniel",
     "12/04/2022",
-    "Enable"
+    "Enabled"
   ),
   createDataSports(
     "Ride",
     "Cycle Sports",
     "Gloria Yort",
     "01/01/2023",
-    "Enable"
+    "Enabled"
   ),
   createDataSports(
     "Row",
     "Water Sports",
     "Gloria Yort",
     "12/19/2022",
-    "Enable"
+    "Enabled"
   ),
   createDataSports(
     "Sail",
@@ -467,7 +467,7 @@ export const sportData = [
     "Foot Sports",
     "Debra Klein",
     "12/28/2022",
-    "Enable"
+    "Enabled"
   ),
   createDataSports(
     "Yoga",
