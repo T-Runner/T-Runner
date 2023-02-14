@@ -25,8 +25,6 @@ const ListGroup = ({ handleEdit, handleCreate }) => {
     setFormState(defaultGroup);
   };
 
-  console.log('location', formState.location)
-
   return (
     <div>
       <div className='flex justify-between'>
