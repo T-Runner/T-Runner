@@ -12,6 +12,7 @@ const GroupManagement = () => {
   const handleClose = () => {
     setIsCreated(false);
     setIsEdit(false);
+    setGroup(defaultGroup);
   };
 
   const handleCreate = () => {
@@ -36,13 +37,10 @@ const GroupManagement = () => {
   return (
     <div>
       <PageLayout>
-        {isCreate ?
-          <CreateEditGroup onClose={handleClose} isCreate={isCreate} />
+        {isCreate || isEdit ?
+          <CreateEditGroup onClose={handleClose} isCreate={isCreate} data={group} />
           :
-          isEdit ?
-            <CreateEditGroup onClose={handleClose} isCreate={isCreate} data={group} />
-            :
-            <ListGroup handleEdit={handleEdit} handleCreate={handleCreate} />
+          <ListGroup handleEdit={handleEdit} handleCreate={handleCreate} />
         }
       </PageLayout>
     </div>

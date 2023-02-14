@@ -6,10 +6,9 @@ import CheckedIcon from '../../../components/Icons/checked-icon';
 import TextFields from '../../../components/TextField';
 import '../../../../styles/tooltip.css'
 import UploadImage from '../../../components/UploadImage';
-import { activeDatas, defaultGroup, groupTypeDatas, locationDatas } from '../../../../constants';
+import { activeDatas, defaultGroup, groupTypeDatas } from '../../../../constants';
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
 import ModalConfirm from '../../../components/ModalConfirm';
-import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
 import TextArea from '../../../components/TextField/textarea';
 
 const CreateEditGroup = ({ onClose, isCreate, data }) => {
@@ -142,15 +141,15 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
             <button type='submit' className='uppercase w-140 h-10 bg-ct4-green-neon font-barlow font-semibold text-sm rounded' onClick={handleSave}>Save</button>
           </div>
         </div>
-        <div className='mt-8 grid grid-cols-5'>
-          <div className='grid gap-y-4 col-span-2' >
+        <div className='mt-8 flex'>
+          <div className='grid gap-y-4' >
             <TextFields name='Group Name' required={true} placeholder={'Group Name'} value={formState.groupName} onChange={handleChangeGroupName} valid={validForm.groupName} />
             <TextArea name='Description' placeholder={'Description'} value={formState.desc} onChange={handleChangeDescription} />
             <TextFields name='Location' required={true} placeholder={'Location'} value={formState.location} onChange={handleChangeLocation} valid={validForm.location} />
             <TextFields name='Website' placeholder={'Website'} value={formState.website} onChange={handleChangeWebsite} />
             <SingleSelect name='Group Type' required={true} options={groupTypeDatas} value={formState.groupType} onChange={handleChangeGroupType} valid={validForm.groupType} />
             <MultipleSelect name='Sport' width='600px' required={true} value={formState.sport} onChange={handleChangeSport} valid={validForm.sport} />
-            <SingleSelectV2 name='Active' required={true} options={activeDatas} value={formState.active} onChange={handleChangeActive} valid={validForm.active} />
+            <SingleSelect name='Active' required={true} options={activeDatas} value={formState.active} onChange={handleChangeActive} valid={validForm.active} />
             <div className='-ml-3 font-barlow flex items-center'>
               <Checkbox checkedIcon={<CheckedIcon />} />
               <p className='mr-2'>Make your club invite-only?</p>

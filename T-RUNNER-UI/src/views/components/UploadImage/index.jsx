@@ -68,7 +68,7 @@ const UploadImage = ({ img }) => {
   };
 
   return (
-    <div className='text-sm font-barlow-regular col-span-2'>
+    <div className='text-sm font-barlow-regular ml-16'>
       <p >Group Picture</p>
       <div className="flex items-center w-full mt-2" >
         {selectedImage || image ? renderImage() : renderUploadField()}
