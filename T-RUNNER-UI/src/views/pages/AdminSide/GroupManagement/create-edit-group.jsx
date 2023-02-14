@@ -10,7 +10,7 @@ import { activeDatas, defaultGroup, groupTypeDatas, locationDatas } from '../../
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
 import ModalConfirm from '../../../components/ModalConfirm';
 import SingleSelectV2 from '../../../components/Dropdown/single-select-v2';
-import TextArea from '../../../components/TextField/textarea';
+import TextArea from '../../../components/TextArea/index';
 
 const CreateEditGroup = ({ onClose, isCreate, isEdit, data }) => {
   const [showModal, setShowModal] = useState(false);

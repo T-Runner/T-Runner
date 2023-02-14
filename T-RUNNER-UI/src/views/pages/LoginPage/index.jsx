@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import FormInput from "../../components/FormInput";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../../services/auth/authService";
 import { authActions } from "../../../slices/authSlice";
-import TRunner from "../../../views/components/Icons/TRunner";
-import TRunnerLogo from "../../../views/components/Icons/TRunner-logo";
 import TmaLogo from "../../../views/components/Icons/tma-logo";
 import TrunnerLogo from "../../../views/components/Icons/t-runner-logo";
 import SlashIcon from "../../../views/components/Icons/icon-slash";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Button from "@mui/material/Button";
 
 const LoginPage = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -37,6 +33,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("vo ko nào");
     if (email === "tuananh@gmail.com" && password === "12345678") {
       const isLogin = await login(email, password);
       const userProfile = {
@@ -68,17 +65,17 @@ const LoginPage = () => {
 
   return (
     <div className="w-full h-full text-center absolute bg-cover pt-30 font-tnr bg-ct4-dark">
-      <div className="flex justify-center h-16 pb-3">
+      <div className="inline-flex items-center h-20 pb-3">
         <TrunnerLogo />
         <SlashIcon />
-        <TmaLogo width="50" height="40" />
+        <div>
+          <TmaLogo />
+        </div>
       </div>
       <div className="w-0.3 bg-white ml-0.35 h-400 p-7">
-        <div className="grid gap-2">
-          <label className="font-barlow text-ct4-dark text-3xl font-bold italic uppercase pb-3">
-            Log In
-          </label>
-        </div>
+        <label className="font-barlow text-ct4-dark text-3xl font-bold italic uppercase pb-3">
+          Log In
+        </label>
         <form onSubmit={handleSubmit}>
           <FormInput
             email={email}

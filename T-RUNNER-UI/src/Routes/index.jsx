@@ -10,8 +10,6 @@ import ChallengeBoard from '../views/components/ChallengeBoard';
 import WorkoutHistory from '../views/components/WorkoutHistory';
 import ListPost from '../views/components/Posts';
 import NotFoundPage from '../views/pages/NotFoundPage';
-import MemberManagement from '../views/pages/AdminSide/MemberManagement';
-import ExerciseManagement from '../views/pages/AdminSide/ExerciseManagement';
 import GroupManagement from '../views/pages/AdminSide/GroupManagement';
 import SportManagement from '../views/pages/AdminSide/SportManagement';
 import Dashboard from '../views/pages/AdminSide/Dashboard';
@@ -28,14 +26,12 @@ const Router = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/home' element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
-      <Route path='/register' element={<SignupPage />} />
+      {/* <Route path='/register' element={<SignupPage />} />
       <Route path='/about' element={<AboutPage />} />
       <Route path='/workout/challenge' element={<ChallengeBoard />} />
       <Route path='/workout' element={<WorkoutHistory />} />
-      <Route path='/community' element={<ListPost />} />
+      <Route path='/community' element={<ListPost />} /> */}
       <Route path='/not-found-page' element={<NotFoundPage />} />
-      <Route path='/member-management' element={<MemberManagement />} />
-      <Route path='/exercise-management' element={<ExerciseManagement />} />
       <Route path='/group-management' element={<GroupManagement />} />
       <Route path='/sport-management' element={<SportManagement />} />
       <Route path='*' element={<NotFoundPage />} />

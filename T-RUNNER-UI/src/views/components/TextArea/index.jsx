@@ -1,31 +1,36 @@
 import React from 'react'
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import { StyledTextField } from '../../pages/AdminSide/GroupManagement/style';
 
-const TextArea = ({ name, required, value, onChange, ml, width = '250px', placeholder }) => {
-    return (
-        <div className='flex items-center text-lg font-serif'>
-            <p className='m-2 '>{name} {required && <span className='text-red-600 ml-1'>*</span>}
-            </p>
-            <Box
-                component="form"
-                sx={{
-                    '& .MuiTextField-root': { m: 1, width: width },
-                    marginLeft: ml
-                }}
-                autoComplete="off"
-            >
-                <TextField
-                    multiline
-                    value={value}
-                    onChange={onChange}
-                    required={required ?? null}
-                    rows={3}
-                    placeholder={placeholder}
-                />
-            </Box>
-        </div>
-    )
+const TextArea = ({ name, required, value, onChange, type, width = '600px', height = '120px', placeholder, valid }) => {
+  return (
+    <div className='text-sm font-barlow-regular'>
+      <p>{name} {required && <span className='text-red-600'>*</span>}</p>
+      <Box
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { width: width, height: height, marginTop: '4px' },
+        }}
+        autoComplete="off"
+      >
+        <StyledTextField
+          size='small'
+          value={value}
+          onChange={onChange}
+          required={required ?? null}
+          type={type}
+          placeholder={placeholder}
+          multiline
+          InputProps={{
+            rows: 5
+          }}
+        />
+      </Box>
+      <span hidden={valid || !required} className='text-ct4-red-1'>
+        {name} is required
+      </span>
+    </div>
+  );
 };
 
 export default TextArea;

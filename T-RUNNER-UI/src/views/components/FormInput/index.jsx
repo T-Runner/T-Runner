@@ -13,7 +13,7 @@ const FormInput = ({
   isRegister,
 }) => {
   return (
-    <div>
+    <div className="pt-5 pb-5 grid gap-2">
       <OutlinedInput
         required
         className="mt-5 w-full"
