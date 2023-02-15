@@ -1,27 +1,69 @@
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material';
-import React from 'react'
-import { groupData } from '../../../../constants';
+import React, { useState } from 'react'
+import { activeDatas, defaultGroup, groupData, groupTypeDatas, locationDatas } from '../../../../constants';
 import FilterIcon from '../../../components/Icons/filter-icon';
 import Paginations from '../../../components/Pagination';
 import TotalResult from '../../../components/Pagination/total-result';
 import SearchFields from '../../../components/SearchFields';
 import GroupTR from './groupTR';
 import { StyledTableCell } from './style';
+import CloseIcon from '@mui/icons-material/Close';
+import SingleSelect from '../../../components/Dropdown/single-select';
+import MultipleSelect from '../../../components/Dropdown/multi-select';
+import TextFields from '../../../components/TextField';
 
 const ListGroup = ({ handleEdit, handleCreate }) => {
+  const [formState, setFormState] = useState(defaultGroup);
+  const [showFilter, setShowFilter] = useState(false);
+
+  const handleCloseFilter = () => {
+    setShowFilter(false);
+    setFormState(defaultGroup);
+  };
+
+  const handleResetFilter = () => {
+    setFormState(defaultGroup);
+  };
+
   return (
     <div>
       <div className='flex justify-between'>
-        <p className='uppercase font-barlow font-bold text-28'>Groups</p>
+        <p className='uppercase font-barlow font-semibold text-28'>Groups</p>
         <button className='uppercase w-189 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded' onClick={() => handleCreate()}>Create a New Group</button>
       </div>
       <div>
         <div className='flex justify-between mt-4 font-barlow text-sm'>
           <SearchFields placeholder='Search by group name...' />
-          <div className='cursor-pointer'>
+          <div className='cursor-pointer bg-ct4-soft-green' onClick={() => setShowFilter(true)}>
             <FilterIcon />
           </div>
         </div>
+        {
+          showFilter &&
+          <div className='w-full h-100 border border-ct4-border-gray rounded mt-3'>
+            <div className='flex justify-between cursor-pointer p-4'>
+              <div className='flex gap-8'>
+                <TextFields name='Location' width='275px' placeholder={'Location'} value={formState.location} onChange={(event) => setFormState({ ...formState, location: event.target.value, })} />
+                <MultipleSelect name='Sport' width='275px' value={formState.sport} onChange={(event) => setFormState({ ...formState, sport: event.target.value, })} />
+                <SingleSelect name='Group Type' width='275px' options={groupTypeDatas} value={formState.groupType} onChange={(event) => setFormState({ ...formState, groupType: event.target.value, })} />
+                <SingleSelect name='Active' width='275px' options={activeDatas} value={formState.active} onChange={(event) => setFormState({ ...formState, active: event.target.value, })} />
+                <div className='flex items-end'>
+                  <button className='uppercase w-24 h-10 border border-ct4-border-gray font-barlow font-bold text-sm rounded mr-3' onClick={handleResetFilter}>Reset</button>
+                  {
+                    formState.location == '' && formState.sport.length == 0 && formState.groupType == '' && formState.active == ''
+                      ?
+                      <button className='uppercase w-24 h-10 bg-ct4-disable text-ct4-disable-2 font-barlow font-bold text-sm rounded'>Apply</button>
+                      :
+                      <button className='uppercase w-24 h-10 bg-ct4-green-neon font-barlow font-bold text-sm rounded'>Apply</button>
+                  }
+                </div>
+              </div>
+              <div className='cursor-pointer' onClick={handleCloseFilter}>
+                <CloseIcon />
+              </div>
+            </div>
+          </div>
+        }
         <div className='mt-4'>
           <TableContainer sx={{ maxHeight: 640 }} component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">

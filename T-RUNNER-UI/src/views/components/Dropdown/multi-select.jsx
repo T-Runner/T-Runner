@@ -23,18 +23,18 @@ const sportDatas = [
   "Other",
 ];
 
-const MultipleSelect = ({ name, required, value = [], onChange, valid }) => {
+const MultipleSelect = ({ name, required, value = [], onChange, valid, width = 300 }) => {
 
   return (
     <div>
       <div className='text-sm font-barlow-regular'>
         <p >{name} {required && <span className='text-red-600'>*</span>}</p>
-        <StyledFormControl sx={{ width: 600 }}>
+        <StyledFormControl>
           <StyledSelect
             multiple
             value={value}
             onChange={onChange}
-            sx={{ marginTop: '4px', height: '40px' }}
+            sx={{ marginTop: '4px', height: '40px', width: width }}
             renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
           >

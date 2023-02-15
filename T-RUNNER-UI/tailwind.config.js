@@ -25,10 +25,14 @@ module.exports = {
         'ct4-green-2': '#f3ffe7',
         'ct4-green-3': '#598300',
         'ct4-green-4': '#d8decc',
+        'ct4-dark-green': '#457900',
+        'ct4-soft-green': '#eaf2d9',
         'ct4-border-gray': '#ececec',
         'ct4-border-gray-2': '#d0d0d0',
         'ct4-dark-green': '#457900',
         'ct4-dark': '#333',
+        'ct4-disable': '#f1f1f1',
+        'ct4-disable-2': '#bfbfbf'
       },
       fontFamily: {
         'tnr': '"Times New Roman"',

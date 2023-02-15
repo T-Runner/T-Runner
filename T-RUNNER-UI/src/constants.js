@@ -84,7 +84,7 @@ export const defaultGroup = {
   groupType: '',
   createdDate: '',
   totalRunners: 0,
-  active: '',
+  active: 'Enable',
   website: '',
   checkbox: false,
   img: ''
