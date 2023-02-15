@@ -4,12 +4,12 @@ import MultipleSelect from '../../../components/Dropdown/multi-select';
 import SingleSelect from '../../../components/Dropdown/single-select';
 import CheckedIcon from '../../../components/Icons/checked-icon';
 import TextFields from '../../../components/TextField';
-import '../../../../styles/tooltip.css'
+import '../../../../styles/tooltip.css';
 import UploadImage from '../../../components/UploadImage';
 import { activeDatas, defaultGroup, groupTypeDatas } from '../../../../constants';
 import HelpMenuIcon from '../../../components/Icons/help-menu-icon';
 import ModalConfirm from '../../../components/ModalConfirm';
-import TextArea from '../../../components/TextField/textarea';
+import TextArea from '../../../components/TextArea/index';
 
 const CreateEditGroup = ({ onClose, isCreate, data }) => {
   const [showModal, setShowModal] = useState(false);
@@ -41,7 +41,7 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
     return true;
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = e => {
     if (e) {
       e.preventDefault();
     }
@@ -55,57 +55,57 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
     setShowModal(false);
   };
 
-  const handleChangeGroupName = (event) => {
+  const handleChangeGroupName = event => {
     setFormState({
       ...formState,
-      groupName: event.target.value,
+      groupName: event.target.value
     });
     setValidForm({ ...validForm, groupName: !!event.target.value });
   };
 
-  const handleChangeDescription = (event) => {
+  const handleChangeDescription = event => {
     setFormState({
       ...formState,
-      desc: event.target.value,
+      desc: event.target.value
     });
   };
 
-  const handleChangeLocation = (event) => {
+  const handleChangeLocation = event => {
     setFormState({
       ...formState,
-      location: event.target.value,
+      location: event.target.value
     });
     setValidForm({ ...validForm, location: !!event.target.value });
   };
 
-  const handleChangeGroupType = (event) => {
+  const handleChangeGroupType = event => {
     setFormState({
       ...formState,
-      groupType: event.target.value,
+      groupType: event.target.value
     });
     setValidForm({ ...validForm, groupType: true });
   };
 
-  const handleChangeActive = (event) => {
+  const handleChangeActive = event => {
     setFormState({
       ...formState,
-      active: event.target.value,
+      active: event.target.value
     });
     setValidForm({ ...validForm, active: true });
   };
 
-  const handleChangeSport = (event) => {
+  const handleChangeSport = event => {
     setFormState({
       ...formState,
-      sport: event.target.value,
+      sport: event.target.value
     });
     setValidForm({ ...validForm, sport: true });
   };
 
-  const handleChangeWebsite = (event) => {
+  const handleChangeWebsite = event => {
     setFormState({
       ...formState,
-      sport: event.target.value,
+      sport: event.target.value
     });
   };
 
@@ -113,8 +113,8 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
     if (!validateForm()) {
       return;
     }
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
 
   useEffect(() => {
     setFormState({ ...data });
@@ -130,7 +130,7 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
         <div className='font-barlow font-semibold	flex'>
           <p className='text-ct4-dark-green text-sm uppercase cursor-pointer font-barlow	' onClick={() => onClose()}>Groups</p>
           <div className='mx-3 text-xs text-ct4-gray'>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className='fa-solid fa-chevron-right'></i>
           </div>
           <p className='text-ct4-gray-3 text-sm uppercase'>{isCreate ? 'Create a New Group' : 'Edit Group'}</p>
         </div>
@@ -162,7 +162,10 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
                   </div>
                   <div className='mt-4 '>
                     <p>Runners must request permission to join an invite-only Group.</p>
-                    <p className='mt-4'>Only admins can approve new Group members. Recent activity, club announcements, discussions and private group events will be hidden from non-members.</p>
+                    <p className='mt-4'>
+                      Only admins can approve new Group members. Recent activity, club announcements, discussions and
+                      private group events will be hidden from non-members.
+                    </p>
                   </div>
                 </span>
               </div>
@@ -172,7 +175,13 @@ const CreateEditGroup = ({ onClose, isCreate, data }) => {
         </div>
       </form>
 
-      {showModal && <ModalConfirm isShow={showModal} onClose={handleClose} text='Are you sure you want to save it? This action cannot be undone.' />}
+      {showModal && (
+        <ModalConfirm
+          isShow={showModal}
+          onClose={handleClose}
+          text='Are you sure you want to save it? This action cannot be undone.'
+        />
+      )}
     </div>
   );
 };
